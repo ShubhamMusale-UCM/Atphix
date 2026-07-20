@@ -1,26 +1,195 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --atphix-void: #060608;
+    --atphix-surface: #0D0D12;
+    --atphix-border: #1A1A2E;
+    --atphix-muted: #2A2A40;
+    --atphix-accent-1: #6C63FF;
+    --atphix-accent-2: #00D4AA;
+    --atphix-accent-glow: rgba(108, 99, 255, 0.2);
+    --atphix-text-hi: #F2F2F7;
+    --atphix-text-mid: #8E8EA0;
+    --atphix-text-lo: #45455A;
+
+    --font-syne: 'Syne', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * {
+    border-color: var(--atphix-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--atphix-void);
+    color: var(--atphix-text-hi);
+  }
+
+  body {
+    background-color: var(--atphix-void);
+    color: var(--atphix-text-hi);
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--atphix-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--atphix-muted);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--atphix-accent-1);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+  --color-atphix-void: var(--atphix-void);
+  --color-atphix-surface: var(--atphix-surface);
+  --color-atphix-border: var(--atphix-border);
+  --color-atphix-muted: var(--atphix-muted);
+  --color-atphix-accent-1: var(--atphix-accent-1);
+  --color-atphix-accent-2: var(--atphix-accent-2);
+  --color-atphix-accent-glow: var(--atphix-accent-glow);
+  --color-atphix-text-hi: var(--atphix-text-hi);
+  --color-atphix-text-mid: var(--atphix-text-mid);
+  --color-atphix-text-lo: var(--atphix-text-lo);
+
+  --font-syne: var(--font-syne);
+  --font-inter: var(--font-inter);
+  --font-mono: var(--font-mono);
 }
+
+/* Custom Utilities */
+.font-syne {
+  font-family: var(--font-syne);
+}
+.font-inter {
+  font-family: var(--font-inter);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Typography Classes */
+.display-hero {
+  font-family: var(--font-syne);
+  font-weight: 800;
+  font-size: clamp(64px, 8vw, 120px);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.display-title {
+  font-family: var(--font-syne);
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.heading-1 {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.heading-2 {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.body-lg {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.body-base {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.caption-text {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Background Grids & Orbs */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--atphix-border) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 40%, transparent 100%);
+}
+
+@keyframes orbDrift {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(40px, -30px) scale(1.1);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-orb-drift {
+  animation: orbDrift 20s infinite ease-in-out alternate;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* Chromatic Aberration Text Shadow */
+.chromatic-active {
+  text-shadow: -2px 0 #FF0055, 2px 0 #00D4AA;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-33.333%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Focus Visible Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--atphix-accent-1);
+  outline-offset: 3px;
+}
+
