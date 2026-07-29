@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" class="antialiased dark">
+<html lang="en" class="antialiased dark lenis lenis-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATPHIX | Engineering Intelligence & Autonomous Systems</title>
-    
+    <title>ATPHIX | Engineering Intelligence &amp; Autonomous Systems</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500;600&amp;family=Syne:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -54,11 +56,25 @@
         }
 
         /* Lenis Smooth Scroll Setup */
-        html.lenis { height: auto; }
-        .lenis.lenis-smooth { scroll-behavior: auto; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-        .lenis.lenis-stopped { overflow: hidden; }
-        .lenis.lenis-scrolling iframe { pointer-events: none; }
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
 
         ::selection {
             background-color: #3b82f6;
@@ -114,32 +130,47 @@
             height: 48px;
             background-color: #ffffff;
         }
+
         .cursor-hover .cursor-outline {
             width: 72px;
             height: 72px;
             border-color: rgba(59, 130, 246, 0.4);
         }
-        
+
         .cursor-drag .cursor-dot {
             width: 76px;
             height: 76px;
             background-color: #ffffff;
         }
-        .cursor-drag .cursor-text { opacity: 1; }
-        .cursor-drag .cursor-outline { opacity: 0; }
+
+        .cursor-drag .cursor-text {
+            opacity: 1;
+        }
+
+        .cursor-drag .cursor-outline {
+            opacity: 0;
+        }
 
         .cursor-interactive .cursor-dot {
             width: 60px;
             height: 60px;
             background-color: #3b82f6;
         }
-        .cursor-interactive .cursor-text { opacity: 1; color: #ffffff; }
+
+        .cursor-interactive .cursor-text {
+            opacity: 1;
+            color: #ffffff;
+        }
 
         /* Film Grain Effect Overlay */
         .grain {
             position: fixed;
-            top: -50%; left: -50%; right: -50%; bottom: -50%;
-            width: 200%; height: 200%;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            width: 200%;
+            height: 200%;
             background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
             opacity: 0.04;
             pointer-events: none;
@@ -148,25 +179,56 @@
         }
 
         @keyframes grainAnim {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-5%, -10%); }
-            20% { transform: translate(-15%, 5%); }
-            30% { transform: translate(7%, -25%); }
-            40% { transform: translate(-5%, 25%); }
-            50% { transform: translate(-15%, 10%); }
-            60% { transform: translate(15%, 0%); }
-            70% { transform: translate(0%, 15%); }
-            80% { transform: translate(3%, 35%); }
-            90% { transform: translate(-10%, 10%); }
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            10% {
+                transform: translate(-5%, -10%);
+            }
+
+            20% {
+                transform: translate(-15%, 5%);
+            }
+
+            30% {
+                transform: translate(7%, -25%);
+            }
+
+            40% {
+                transform: translate(-5%, 25%);
+            }
+
+            50% {
+                transform: translate(-15%, 10%);
+            }
+
+            60% {
+                transform: translate(15%, 0%);
+            }
+
+            70% {
+                transform: translate(0%, 15%);
+            }
+
+            80% {
+                transform: translate(3%, 35%);
+            }
+
+            90% {
+                transform: translate(-10%, 10%);
+            }
         }
 
         /* Architectural Grid Pattern */
         .grid-bg {
             position: absolute;
             inset: 0;
-            background-image: 
-                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 80px 80px;
             pointer-events: none;
             z-index: 0;
@@ -183,21 +245,33 @@
             flex-direction: column;
         }
 
-        .split-line { overflow: hidden; display: block; }
-        .split-word { display: inline-block; transform-origin: left bottom; }
-        .split-char { display: inline-block; }
+        .split-line {
+            overflow: hidden;
+            display: block;
+        }
+
+        .split-word {
+            display: inline-block;
+            transform-origin: left bottom;
+        }
+
+        .split-char {
+            display: inline-block;
+        }
 
         #hero-canvas {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 1;
             pointer-events: auto;
         }
 
         .outline-text {
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255,255,255,0.75);
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.75);
         }
 
         .glow-accent {
@@ -210,7 +284,7 @@
             align-items: center;
             justify-content: center;
             padding: 1.25rem 2.75rem;
-            border: 1px solid rgba(255,255,255,0.18);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 9999px;
             text-transform: uppercase;
             font-size: 0.75rem;
@@ -223,31 +297,35 @@
             backdrop-filter: blur(10px);
             transition: border-color 0.4s ease;
         }
-        
+
         .magnetic-btn .btn-text {
             position: relative;
             z-index: 2;
             transition: color 0.4s ease;
         }
-        
+
         .magnetic-btn::before {
             content: '';
             position: absolute;
-            top: 100%; left: 0;
-            width: 100%; height: 100%;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: #ffffff;
             border-radius: 50%;
             transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
             z-index: 1;
         }
-        
+
         .magnetic-btn:hover::before {
             transform: translateY(-50%) scaleY(2.5);
             border-radius: 0;
         }
+
         .magnetic-btn:hover .btn-text {
             color: #030303;
         }
+
         .magnetic-btn:hover {
             border-color: #ffffff;
         }
@@ -258,7 +336,7 @@
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.07);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
             transition: border-color 0.4s ease, transform 0.2s ease-out;
         }
 
@@ -272,16 +350,29 @@
             width: max-content;
             animation: marquee 25s linear infinite;
         }
+
         .marquee-reverse {
             animation: marqueeReverse 25s linear infinite;
         }
+
         @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
+
         @keyframes marqueeReverse {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
         }
 
         /* Interactive Modal Drawer */
@@ -321,37 +412,1871 @@
 
         /* Touch Fallback */
         @media (hover: none) and (pointer: coarse) {
-            .cursor-dot, .cursor-outline { display: none !important; }
-            body { cursor: auto; }
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none !important;
+            }
+
+            body {
+                cursor: auto;
+            }
+        }
+    </style>
+    <style>
+        *,
+        ::before,
+        ::after {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        /* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb
+        }
+
+        ::after,
+        ::before {
+            --tw-content: ''
+        }
+
+        :host,
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            font-family: Inter, sans-serif;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        body {
+            margin: 0;
+            line-height: inherit
+        }
+
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px
+        }
+
+        abbr:where([title]) {
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: inherit;
+            font-weight: inherit
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit
+        }
+
+        b,
+        strong {
+            font-weight: bolder
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: JetBrains Mono, monospace;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            font-size: 1em
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        table {
+            text-indent: 0;
+            border-color: inherit;
+            border-collapse: collapse
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0
+        }
+
+        button,
+        select {
+            text-transform: none
+        }
+
+        button,
+        input:where([type=button]),
+        input:where([type=reset]),
+        input:where([type=submit]) {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none
+        }
+
+        :-moz-focusring {
+            outline: auto
+        }
+
+        :-moz-ui-invalid {
+            box-shadow: none
+        }
+
+        progress {
+            vertical-align: baseline
+        }
+
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        ::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        summary {
+            display: list-item
+        }
+
+        blockquote,
+        dd,
+        dl,
+        figure,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        p,
+        pre {
+            margin: 0
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 0
+        }
+
+        legend {
+            padding: 0
+        }
+
+        menu,
+        ol,
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        dialog {
+            padding: 0
+        }
+
+        textarea {
+            resize: vertical
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            opacity: 1;
+            color: #9ca3af
+        }
+
+        [role=button],
+        button {
+            cursor: pointer
+        }
+
+        :disabled {
+            cursor: default
+        }
+
+        audio,
+        canvas,
+        embed,
+        iframe,
+        img,
+        object,
+        svg,
+        video {
+            display: block;
+            vertical-align: middle
+        }
+
+        img,
+        video {
+            max-width: 100%;
+            height: auto
+        }
+
+        [hidden]:where(:not([hidden=until-found])) {
+            display: none
+        }
+
+        .pointer-events-none {
+            pointer-events: none
+        }
+
+        .fixed {
+            position: fixed
+        }
+
+        .absolute {
+            position: absolute
+        }
+
+        .relative {
+            position: relative
+        }
+
+        .inset-0 {
+            inset: 0px
+        }
+
+        .bottom-10 {
+            bottom: 2.5rem
+        }
+
+        .left-0 {
+            left: 0px
+        }
+
+        .left-6 {
+            left: 1.5rem
+        }
+
+        .right-0 {
+            right: 0px
+        }
+
+        .right-6 {
+            right: 1.5rem
+        }
+
+        .right-8 {
+            right: 2rem
+        }
+
+        .top-0 {
+            top: 0px
+        }
+
+        .top-16 {
+            top: 4rem
+        }
+
+        .top-8 {
+            top: 2rem
+        }
+
+        .z-0 {
+            z-index: 0
+        }
+
+        .z-10 {
+            z-index: 10
+        }
+
+        .z-20 {
+            z-index: 20
+        }
+
+        .z-\[100\] {
+            z-index: 100
+        }
+
+        .mx-6 {
+            margin-left: 1.5rem;
+            margin-right: 1.5rem
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .mb-1 {
+            margin-bottom: 0.25rem
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem
+        }
+
+        .mb-16 {
+            margin-bottom: 4rem
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem
+        }
+
+        .mb-20 {
+            margin-bottom: 5rem
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem
+        }
+
+        .mt-12 {
+            margin-top: 3rem
+        }
+
+        .mt-16 {
+            margin-top: 4rem
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem
+        }
+
+        .mt-6 {
+            margin-top: 1.5rem
+        }
+
+        .mt-8 {
+            margin-top: 2rem
+        }
+
+        .block {
+            display: block
+        }
+
+        .flex {
+            display: flex
+        }
+
+        .inline-flex {
+            display: inline-flex
+        }
+
+        .grid {
+            display: grid
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .h-1 {
+            height: 0.25rem
+        }
+
+        .h-1\/2 {
+            height: 50%
+        }
+
+        .h-12 {
+            height: 3rem
+        }
+
+        .h-14 {
+            height: 3.5rem
+        }
+
+        .h-16 {
+            height: 4rem
+        }
+
+        .h-2 {
+            height: 0.5rem
+        }
+
+        .h-2\.5 {
+            height: 0.625rem
+        }
+
+        .h-6 {
+            height: 1.5rem
+        }
+
+        .h-64 {
+            height: 16rem
+        }
+
+        .h-7 {
+            height: 1.75rem
+        }
+
+        .h-\[1px\] {
+            height: 1px
+        }
+
+        .h-\[2px\] {
+            height: 2px
+        }
+
+        .h-\[65vh\] {
+            height: 65vh
+        }
+
+        .h-full {
+            height: 100%
+        }
+
+        .h-screen {
+            height: 100vh
+        }
+
+        .min-h-\[460px\] {
+            min-height: 460px
+        }
+
+        .min-h-screen {
+            min-height: 100vh
+        }
+
+        .w-0 {
+            width: 0px
+        }
+
+        .w-12 {
+            width: 3rem
+        }
+
+        .w-14 {
+            width: 3.5rem
+        }
+
+        .w-2 {
+            width: 0.5rem
+        }
+
+        .w-2\.5 {
+            width: 0.625rem
+        }
+
+        .w-6 {
+            width: 1.5rem
+        }
+
+        .w-64 {
+            width: 16rem
+        }
+
+        .w-7 {
+            width: 1.75rem
+        }
+
+        .w-72 {
+            width: 18rem
+        }
+
+        .w-\[1px\] {
+            width: 1px
+        }
+
+        .w-\[340px\] {
+            width: 340px
+        }
+
+        .w-\[max-content\] {
+            width: max-content
+        }
+
+        .w-full {
+            width: 100%
+        }
+
+        .max-w-3xl {
+            max-width: 48rem
+        }
+
+        .max-w-4xl {
+            max-width: 56rem
+        }
+
+        .max-w-\[1400px\] {
+            max-width: 1400px
+        }
+
+        .max-w-md {
+            max-width: 28rem
+        }
+
+        .max-w-sm {
+            max-width: 24rem
+        }
+
+        .shrink-0 {
+            flex-shrink: 0
+        }
+
+        .origin-bottom {
+            transform-origin: bottom
+        }
+
+        .rotate-90 {
+            --tw-rotate: 90deg;
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+        }
+
+        .animate-\[scrollDown_2s_ease-in-out_infinite\] {
+            animation: scrollDown 2s ease-in-out infinite
+        }
+
+        @keyframes ping {
+
+            75%,
+            100% {
+                transform: scale(2);
+                opacity: 0
+            }
+        }
+
+        .animate-ping {
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite
+        }
+
+        @keyframes pulse {
+            50% {
+                opacity: .5
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite
+        }
+
+        .cursor-text {
+            cursor: text
+        }
+
+        .select-none {
+            -webkit-user-select: none;
+            user-select: none
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+        }
+
+        .flex-col {
+            flex-direction: column
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap
+        }
+
+        .items-start {
+            align-items: flex-start
+        }
+
+        .items-center {
+            align-items: center
+        }
+
+        .justify-center {
+            justify-content: center
+        }
+
+        .justify-between {
+            justify-content: space-between
+        }
+
+        .gap-12 {
+            gap: 3rem
+        }
+
+        .gap-16 {
+            gap: 4rem
+        }
+
+        .gap-2 {
+            gap: 0.5rem
+        }
+
+        .gap-3 {
+            gap: 0.75rem
+        }
+
+        .gap-4 {
+            gap: 1rem
+        }
+
+        .gap-6 {
+            gap: 1.5rem
+        }
+
+        .gap-8 {
+            gap: 2rem
+        }
+
+        .space-y-3> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(0.75rem * var(--tw-space-y-reverse))
+        }
+
+        .space-y-6> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(1.5rem * var(--tw-space-y-reverse))
+        }
+
+        .overflow-hidden {
+            overflow: hidden
+        }
+
+        .whitespace-nowrap {
+            white-space: nowrap
+        }
+
+        .rounded {
+            border-radius: 0.25rem
+        }
+
+        .rounded-2xl {
+            border-radius: 1rem
+        }
+
+        .rounded-3xl {
+            border-radius: 1.5rem
+        }
+
+        .rounded-full {
+            border-radius: 9999px
+        }
+
+        .rounded-md {
+            border-radius: 0.375rem
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem
+        }
+
+        .rounded-bl-2xl {
+            border-bottom-left-radius: 1rem
+        }
+
+        .border {
+            border-width: 1px
+        }
+
+        .border-y {
+            border-top-width: 1px;
+            border-bottom-width: 1px
+        }
+
+        .border-b {
+            border-bottom-width: 1px
+        }
+
+        .border-l {
+            border-left-width: 1px
+        }
+
+        .border-t {
+            border-top-width: 1px
+        }
+
+        .border-amber-500\/30 {
+            border-color: rgb(245 158 11 / 0.3)
+        }
+
+        .border-amber-500\/40 {
+            border-color: rgb(245 158 11 / 0.4)
+        }
+
+        .border-brand-accent\/30 {
+            border-color: rgb(59 130 246 / 0.3)
+        }
+
+        .border-brand-accent\/40 {
+            border-color: rgb(59 130 246 / 0.4)
+        }
+
+        .border-brand-cyan\/30 {
+            border-color: rgb(6 182 212 / 0.3)
+        }
+
+        .border-brand-cyan\/40 {
+            border-color: rgb(6 182 212 / 0.4)
+        }
+
+        .border-emerald-500\/30 {
+            border-color: rgb(16 185 129 / 0.3)
+        }
+
+        .border-emerald-500\/40 {
+            border-color: rgb(16 185 129 / 0.4)
+        }
+
+        .border-white\/10 {
+            border-color: rgb(255 255 255 / 0.1)
+        }
+
+        .bg-\[\#030303\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(3 3 3 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#030303\]\/85 {
+            background-color: rgb(3 3 3 / 0.85)
+        }
+
+        .bg-\[\#060608\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(6 6 8 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-\[\#0a0a0c\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(10 10 12 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-amber-400\/20 {
+            background-color: rgb(251 191 36 / 0.2)
+        }
+
+        .bg-amber-500\/10 {
+            background-color: rgb(245 158 11 / 0.1)
+        }
+
+        .bg-amber-500\/20 {
+            background-color: rgb(245 158 11 / 0.2)
+        }
+
+        .bg-black\/50 {
+            background-color: rgb(0 0 0 / 0.5)
+        }
+
+        .bg-brand-accent {
+            --tw-bg-opacity: 1;
+            background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-brand-accent\/10 {
+            background-color: rgb(59 130 246 / 0.1)
+        }
+
+        .bg-brand-accent\/20 {
+            background-color: rgb(59 130 246 / 0.2)
+        }
+
+        .bg-brand-cyan\/10 {
+            background-color: rgb(6 182 212 / 0.1)
+        }
+
+        .bg-brand-cyan\/20 {
+            background-color: rgb(6 182 212 / 0.2)
+        }
+
+        .bg-emerald-400 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(52 211 153 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-emerald-400\/20 {
+            background-color: rgb(52 211 153 / 0.2)
+        }
+
+        .bg-emerald-500 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(16 185 129 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-emerald-500\/10 {
+            background-color: rgb(16 185 129 / 0.1)
+        }
+
+        .bg-emerald-500\/20 {
+            background-color: rgb(16 185 129 / 0.2)
+        }
+
+        .bg-white {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-white\/10 {
+            background-color: rgb(255 255 255 / 0.1)
+        }
+
+        .bg-white\/5 {
+            background-color: rgb(255 255 255 / 0.05)
+        }
+
+        .bg-gradient-to-br {
+            background-image: linear-gradient(to bottom right, var(--tw-gradient-stops))
+        }
+
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--tw-gradient-stops))
+        }
+
+        .bg-gradient-to-t {
+            background-image: linear-gradient(to top, var(--tw-gradient-stops))
+        }
+
+        .from-\[\#030303\] {
+            --tw-gradient-from: #030303 var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(3 3 3 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+        }
+
+        .from-brand-accent {
+            --tw-gradient-from: #3b82f6 var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(59 130 246 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+        }
+
+        .from-brand-accent\/20 {
+            --tw-gradient-from: rgb(59 130 246 / 0.2) var(--tw-gradient-from-position);
+            --tw-gradient-to: rgb(59 130 246 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+        }
+
+        .via-\[\#0a0a0c\]\/80 {
+            --tw-gradient-to: rgb(10 10 12 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), rgb(10 10 12 / 0.8) var(--tw-gradient-via-position), var(--tw-gradient-to)
+        }
+
+        .via-brand-cyan {
+            --tw-gradient-to: rgb(6 182 212 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), #06b6d4 var(--tw-gradient-via-position), var(--tw-gradient-to)
+        }
+
+        .via-transparent {
+            --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), transparent var(--tw-gradient-via-position), var(--tw-gradient-to)
+        }
+
+        .to-brand-cyan\/20 {
+            --tw-gradient-to: rgb(6 182 212 / 0.2) var(--tw-gradient-to-position)
+        }
+
+        .to-emerald-400 {
+            --tw-gradient-to: #34d399 var(--tw-gradient-to-position)
+        }
+
+        .to-transparent {
+            --tw-gradient-to: transparent var(--tw-gradient-to-position)
+        }
+
+        .object-cover {
+            object-fit: cover
+        }
+
+        .object-center {
+            object-position: center
+        }
+
+        .p-3 {
+            padding: 0.75rem
+        }
+
+        .p-6 {
+            padding: 1.5rem
+        }
+
+        .p-8 {
+            padding: 2rem
+        }
+
+        .\!px-6 {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important
+        }
+
+        .\!py-3 {
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important
+        }
+
+        .px-2 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem
+        }
+
+        .px-2\.5 {
+            padding-left: 0.625rem;
+            padding-right: 0.625rem
+        }
+
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem
+        }
+
+        .px-7 {
+            padding-left: 1.75rem;
+            padding-right: 1.75rem
+        }
+
+        .py-0\.5 {
+            padding-top: 0.125rem;
+            padding-bottom: 0.125rem
+        }
+
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem
+        }
+
+        .py-1\.5 {
+            padding-top: 0.375rem;
+            padding-bottom: 0.375rem
+        }
+
+        .py-10 {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem
+        }
+
+        .py-24 {
+            padding-top: 6rem;
+            padding-bottom: 6rem
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem
+        }
+
+        .py-6 {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .pb-12 {
+            padding-bottom: 3rem
+        }
+
+        .pb-16 {
+            padding-bottom: 4rem
+        }
+
+        .pb-2 {
+            padding-bottom: 0.5rem
+        }
+
+        .pl-6 {
+            padding-left: 1.5rem
+        }
+
+        .pt-12 {
+            padding-top: 3rem
+        }
+
+        .pt-16 {
+            padding-top: 4rem
+        }
+
+        .pt-20 {
+            padding-top: 5rem
+        }
+
+        .pt-4 {
+            padding-top: 1rem
+        }
+
+        .pt-6 {
+            padding-top: 1.5rem
+        }
+
+        .pt-8 {
+            padding-top: 2rem
+        }
+
+        .text-center {
+            text-align: center
+        }
+
+        .font-display {
+            font-family: Syne, sans-serif
+        }
+
+        .font-mono {
+            font-family: JetBrains Mono, monospace
+        }
+
+        .font-sans {
+            font-family: Inter, sans-serif
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1
+        }
+
+        .text-\[10px\] {
+            font-size: 10px
+        }
+
+        .text-\[11px\] {
+            font-size: 11px
+        }
+
+        .text-\[28vw\] {
+            font-size: 28vw
+        }
+
+        .text-\[9px\] {
+            font-size: 9px
+        }
+
+        .text-base {
+            font-size: 1rem;
+            line-height: 1.5rem
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+            line-height: 1rem
+        }
+
+        .font-black {
+            font-weight: 900
+        }
+
+        .font-bold {
+            font-weight: 700
+        }
+
+        .font-extrabold {
+            font-weight: 800
+        }
+
+        .font-light {
+            font-weight: 300
+        }
+
+        .font-medium {
+            font-weight: 500
+        }
+
+        .font-semibold {
+            font-weight: 600
+        }
+
+        .uppercase {
+            text-transform: uppercase
+        }
+
+        .leading-\[0\.95\] {
+            line-height: 0.95
+        }
+
+        .leading-relaxed {
+            line-height: 1.625
+        }
+
+        .leading-snug {
+            line-height: 1.375
+        }
+
+        .tracking-\[0\.25em\] {
+            letter-spacing: 0.25em
+        }
+
+        .tracking-\[0\.2em\] {
+            letter-spacing: 0.2em
+        }
+
+        .tracking-\[0\.3em\] {
+            letter-spacing: 0.3em
+        }
+
+        .tracking-tight {
+            letter-spacing: -0.025em
+        }
+
+        .tracking-tighter {
+            letter-spacing: -0.05em
+        }
+
+        .tracking-wider {
+            letter-spacing: 0.05em
+        }
+
+        .tracking-widest {
+            letter-spacing: 0.1em
+        }
+
+        .text-amber-400 {
+            --tw-text-opacity: 1;
+            color: rgb(251 191 36 / var(--tw-text-opacity, 1))
+        }
+
+        .text-brand-accent {
+            --tw-text-opacity: 1;
+            color: rgb(59 130 246 / var(--tw-text-opacity, 1))
+        }
+
+        .text-brand-cyan {
+            --tw-text-opacity: 1;
+            color: rgb(6 182 212 / var(--tw-text-opacity, 1))
+        }
+
+        .text-emerald-400 {
+            --tw-text-opacity: 1;
+            color: rgb(52 211 153 / var(--tw-text-opacity, 1))
+        }
+
+        .text-red-500\/80 {
+            color: rgb(239 68 68 / 0.8)
+        }
+
+        .text-white {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .text-white\/10 {
+            color: rgb(255 255 255 / 0.1)
+        }
+
+        .text-white\/30 {
+            color: rgb(255 255 255 / 0.3)
+        }
+
+        .text-white\/40 {
+            color: rgb(255 255 255 / 0.4)
+        }
+
+        .text-white\/50 {
+            color: rgb(255 255 255 / 0.5)
+        }
+
+        .text-white\/60 {
+            color: rgb(255 255 255 / 0.6)
+        }
+
+        .text-white\/70 {
+            color: rgb(255 255 255 / 0.7)
+        }
+
+        .text-white\/80 {
+            color: rgb(255 255 255 / 0.8)
+        }
+
+        .text-white\/90 {
+            color: rgb(255 255 255 / 0.9)
+        }
+
+        .antialiased {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
+        }
+
+        .opacity-0 {
+            opacity: 0
+        }
+
+        .opacity-35 {
+            opacity: 0.35
+        }
+
+        .opacity-90 {
+            opacity: 0.9
+        }
+
+        .opacity-\[0\.04\] {
+            opacity: 0.04
+        }
+
+        .mix-blend-difference {
+            mix-blend-mode: difference
+        }
+
+        .shadow-\[0_0_12px_\#10b981\] {
+            --tw-shadow: 0 0 12px #10b981;
+            --tw-shadow-colored: 0 0 12px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-\[0_0_20px_rgba\(16\2c 185\2c 129\2c 0\.3\)\] {
+            --tw-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-\[0_0_20px_rgba\(245\2c 158\2c 11\2c 0\.3\)\] {
+            --tw-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+            --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-\[0_0_20px_rgba\(59\2c 130\2c 246\2c 0\.3\)\] {
+            --tw-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-\[0_0_20px_rgba\(6\2c 182\2c 212\2c 0\.3\)\] {
+            --tw-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+            --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .blur-3xl {
+            --tw-blur: blur(64px);
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+        }
+
+        .drop-shadow-lg {
+            --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+        }
+
+        .filter {
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+        }
+
+        .backdrop-blur-md {
+            --tw-backdrop-blur: blur(12px);
+            -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+        }
+
+        .backdrop-blur-sm {
+            --tw-backdrop-blur: blur(4px);
+            -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+        }
+
+        .backdrop-blur-xl {
+            --tw-backdrop-blur: blur(24px);
+            -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+        }
+
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .transition-colors {
+            transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .transition-opacity {
+            transition-property: opacity;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .transition-transform {
+            transition-property: transform;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .duration-300 {
+            transition-duration: 300ms
+        }
+
+        .duration-500 {
+            transition-duration: 500ms
+        }
+
+        .duration-700 {
+            transition-duration: 700ms
+        }
+
+        .duration-75 {
+            transition-duration: 75ms
+        }
+
+        .selection\:bg-brand-accent *::selection {
+            --tw-bg-opacity: 1;
+            background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1))
+        }
+
+        .selection\:text-white *::selection {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .selection\:bg-brand-accent::selection {
+            --tw-bg-opacity: 1;
+            background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1))
+        }
+
+        .selection\:text-white::selection {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:border-amber-400:hover {
+            --tw-border-opacity: 1;
+            border-color: rgb(251 191 36 / var(--tw-border-opacity, 1))
+        }
+
+        .hover\:border-amber-400\/40:hover {
+            border-color: rgb(251 191 36 / 0.4)
+        }
+
+        .hover\:border-amber-400\/50:hover {
+            border-color: rgb(251 191 36 / 0.5)
+        }
+
+        .hover\:border-amber-500\/60:hover {
+            border-color: rgb(245 158 11 / 0.6)
+        }
+
+        .hover\:border-brand-accent:hover {
+            --tw-border-opacity: 1;
+            border-color: rgb(59 130 246 / var(--tw-border-opacity, 1))
+        }
+
+        .hover\:border-brand-accent\/40:hover {
+            border-color: rgb(59 130 246 / 0.4)
+        }
+
+        .hover\:border-brand-accent\/50:hover {
+            border-color: rgb(59 130 246 / 0.5)
+        }
+
+        .hover\:border-brand-accent\/60:hover {
+            border-color: rgb(59 130 246 / 0.6)
+        }
+
+        .hover\:border-brand-cyan:hover {
+            --tw-border-opacity: 1;
+            border-color: rgb(6 182 212 / var(--tw-border-opacity, 1))
+        }
+
+        .hover\:border-brand-cyan\/40:hover {
+            border-color: rgb(6 182 212 / 0.4)
+        }
+
+        .hover\:border-brand-cyan\/50:hover {
+            border-color: rgb(6 182 212 / 0.5)
+        }
+
+        .hover\:border-brand-cyan\/60:hover {
+            border-color: rgb(6 182 212 / 0.6)
+        }
+
+        .hover\:border-emerald-400:hover {
+            --tw-border-opacity: 1;
+            border-color: rgb(52 211 153 / var(--tw-border-opacity, 1))
+        }
+
+        .hover\:border-emerald-400\/40:hover {
+            border-color: rgb(52 211 153 / 0.4)
+        }
+
+        .hover\:border-emerald-400\/50:hover {
+            border-color: rgb(52 211 153 / 0.5)
+        }
+
+        .hover\:border-emerald-500\/60:hover {
+            border-color: rgb(16 185 129 / 0.6)
+        }
+
+        .hover\:bg-white\/10:hover {
+            background-color: rgb(255 255 255 / 0.1)
+        }
+
+        .hover\:text-brand-accent:hover {
+            --tw-text-opacity: 1;
+            color: rgb(59 130 246 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-red-400:hover {
+            --tw-text-opacity: 1;
+            color: rgb(248 113 113 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-white:hover {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .group:hover .group-hover\:scale-105 {
+            --tw-scale-x: 1.05;
+            --tw-scale-y: 1.05;
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+        }
+
+        .group:hover .group-hover\:text-amber-400 {
+            --tw-text-opacity: 1;
+            color: rgb(251 191 36 / var(--tw-text-opacity, 1))
+        }
+
+        .group:hover .group-hover\:text-brand-accent {
+            --tw-text-opacity: 1;
+            color: rgb(59 130 246 / var(--tw-text-opacity, 1))
+        }
+
+        .group:hover .group-hover\:text-brand-cyan {
+            --tw-text-opacity: 1;
+            color: rgb(6 182 212 / var(--tw-text-opacity, 1))
+        }
+
+        .group:hover .group-hover\:text-emerald-400 {
+            --tw-text-opacity: 1;
+            color: rgb(52 211 153 / var(--tw-text-opacity, 1))
+        }
+
+        @media (min-width: 640px) {
+            .sm\:inline-flex {
+                display: inline-flex
+            }
+
+            .sm\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        @media (min-width: 768px) {
+            .md\:bottom-12 {
+                bottom: 3rem
+            }
+
+            .md\:left-12 {
+                left: 3rem
+            }
+
+            .md\:right-12 {
+                right: 3rem
+            }
+
+            .md\:w-\[480px\] {
+                width: 480px
+            }
+
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .md\:flex-row {
+                flex-direction: row
+            }
+
+            .md\:items-end {
+                align-items: flex-end
+            }
+
+            .md\:gap-12 {
+                gap: 3rem
+            }
+
+            .md\:p-10 {
+                padding: 2.5rem
+            }
+
+            .md\:p-12 {
+                padding: 3rem
+            }
+
+            .md\:px-10 {
+                padding-left: 2.5rem;
+                padding-right: 2.5rem
+            }
+
+            .md\:px-12 {
+                padding-left: 3rem;
+                padding-right: 3rem
+            }
+
+            .md\:px-32 {
+                padding-left: 8rem;
+                padding-right: 8rem
+            }
+
+            .md\:py-14 {
+                padding-top: 3.5rem;
+                padding-bottom: 3.5rem
+            }
+
+            .md\:py-32 {
+                padding-top: 8rem;
+                padding-bottom: 8rem
+            }
+
+            .md\:py-36 {
+                padding-top: 9rem;
+                padding-bottom: 9rem
+            }
+
+            .md\:py-8 {
+                padding-top: 2rem;
+                padding-bottom: 2rem
+            }
+
+            .md\:py-5 {
+                padding-top: 1.25rem;
+                padding-bottom: 1.25rem
+            }
+
+            .md\:pl-8 {
+                padding-left: 2rem
+            }
+
+            .md\:text-3xl {
+                font-size: 1.875rem;
+                line-height: 2.25rem
+            }
+
+            .md\:text-4xl {
+                font-size: 2.25rem;
+                line-height: 2.5rem
+            }
+
+            .md\:text-5xl {
+                font-size: 3rem;
+                line-height: 1
+            }
+
+            .md\:text-6xl {
+                font-size: 3.75rem;
+                line-height: 1
+            }
+
+            .md\:text-7xl {
+                font-size: 4.5rem;
+                line-height: 1
+            }
+
+            .md\:text-8xl {
+                font-size: 6rem;
+                line-height: 1
+            }
+
+            .md\:text-base {
+                font-size: 1rem;
+                line-height: 1.5rem
+            }
+
+            .md\:text-sm {
+                font-size: 0.875rem;
+                line-height: 1.25rem
+            }
+
+            .md\:text-xl {
+                font-size: 1.25rem;
+                line-height: 1.75rem
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:sticky {
+                position: sticky
+            }
+
+            .lg\:top-28 {
+                top: 7rem
+            }
+
+            .lg\:col-span-2 {
+                grid-column: span 2 / span 2
+            }
+
+            .lg\:col-span-5 {
+                grid-column: span 5 / span 5
+            }
+
+            .lg\:col-span-7 {
+                grid-column: span 7 / span 7
+            }
+
+            .lg\:flex {
+                display: flex
+            }
+
+            .lg\:w-1\/3 {
+                width: 33.333333%
+            }
+
+            .lg\:w-2\/3 {
+                width: 66.666667%
+            }
+
+            .lg\:grid-cols-12 {
+                grid-template-columns: repeat(12, minmax(0, 1fr))
+            }
+
+            .lg\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .lg\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr))
+            }
+
+            .lg\:grid-cols-5 {
+                grid-template-columns: repeat(5, minmax(0, 1fr))
+            }
+
+            .lg\:flex-row {
+                flex-direction: row
+            }
+
+            .lg\:pt-12 {
+                padding-top: 3rem
+            }
+
+            .lg\:text-8xl {
+                font-size: 6rem;
+                line-height: 1
+            }
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+<body class="font-sans antialiased selection:bg-brand-accent selection:text-white" style="">
 
     <!-- Film Grain Background -->
     <div class="grain"></div>
 
     <!-- Custom Cursor -->
-    <div class="cursor-dot">
+    <div class="cursor-dot" style="transform: translate3d(1307px, 14px, 0px) translate(-50%, -50%);">
         <span class="cursor-text" id="cursor-text">Drag</span>
     </div>
-    <div class="cursor-outline"></div>
+    <div class="cursor-outline" style="transform: translate3d(1307px, 14px, 0px) translate(-50%, -50%);"></div>
 
     <!-- Interactive Case Study Modal Drawer -->
     <div class="modal-drawer" id="case-study-modal" aria-hidden="true">
         <div class="modal-content relative flex flex-col justify-between">
-            <button class="absolute top-8 right-8 text-red-500/80 hover:text-red-400 font-mono text-xs tracking-widest uppercase cursor-hover-target transition-colors" id="close-modal">
+            <button
+                class="absolute top-8 right-8 text-red-500/80 hover:text-red-400 font-mono text-xs tracking-widest uppercase cursor-hover-target transition-colors"
+                id="close-modal">
                 [ ESC / CLOSE ]
             </button>
             <div>
-                <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-4" id="modal-tag">[ ARCHITECTURE BREAKDOWN ]</span>
-                <h3 class="font-display font-bold text-3xl md:text-5xl text-white uppercase tracking-tight mb-6" id="modal-title">Project Title</h3>
+                <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-4" id="modal-tag">[
+                    ARCHITECTURE BREAKDOWN ]</span>
+                <h3 class="font-display font-bold text-3xl md:text-5xl text-white uppercase tracking-tight mb-6"
+                    id="modal-title">Project Title</h3>
                 <div class="w-full h-[1px] bg-white/10 mb-8"></div>
                 <div class="space-y-6 text-white/70 font-sans text-sm md:text-base leading-relaxed" id="modal-body">
                     <p>Loading deep telemetry insights...</p>
                 </div>
             </div>
-            <div class="pt-12 border-t border-white/10 mt-12 flex items-center justify-between font-mono text-xs text-white/40">
+            <div
+                class="pt-12 border-t border-white/10 mt-12 flex items-center justify-between font-mono text-xs text-white/40">
                 <span>STATUS: VERIFIED DEPLOYMENT</span>
                 <span>SECURITY: LEVEL 05</span>
             </div>
@@ -359,43 +2284,74 @@
     </div>
 
     <!-- High-Tech Boot Sequence Loader -->
-    <div class="loader-wrapper" id="loader">
-        <div class="overflow-hidden mb-6 relative">
-            <h1 class="font-display font-bold text-5xl md:text-8xl tracking-tighter loader-text mix-blend-difference text-white">ATPHIX</h1>
-        </div>
-        <div class="w-72 h-[2px] bg-white/10 relative overflow-hidden mt-6">
-            <div class="absolute top-0 left-0 h-full bg-white w-0 transition-all duration-75" id="loader-progress"></div>
-        </div>
-        <div class="mt-6 flex justify-between w-72 text-[10px] font-mono tracking-widest text-white/50 uppercase">
-            <span id="loader-status">LOAD_MODULE: NEURAL_CORE</span>
-            <span id="loader-counter">000%</span>
-        </div>
-    </div>
+
 
     <!-- Sticky Navigation Header -->
-    <header id="main-header" class="fixed top-0 left-0 w-full px-6 py-6 md:px-10 md:py-8 flex justify-between items-center z-[100] text-white transition-all duration-500">
+    <div class="loader-wrapper" id="loader"
+        style="translate: none; rotate: none; scale: none; transform: translate(0%, -100%); display: none;">
+        <div class="overflow-hidden mb-6 relative">
+            <h1 class="font-display font-bold text-5xl md:text-8xl tracking-tighter loader-text mix-blend-difference text-white"
+                style="translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0px, -50px);">ATPHIX
+            </h1>
+        </div>
+        <div class="w-72 h-[2px] bg-white/10 relative overflow-hidden mt-6">
+            <div class="absolute top-0 left-0 h-full bg-white w-0 transition-all duration-75" id="loader-progress"
+                style="width: 100%;"></div>
+        </div>
+        <div class="mt-6 flex justify-between w-72 text-[10px] font-mono tracking-widest text-white/50 uppercase">
+            <span id="loader-status">BOOT_INTERFACE: READY</span>
+            <span id="loader-counter">100%</span>
+        </div>
+    </div>
+    <header id="main-header"
+        class="fixed top-0 left-0 w-full px-6 md:px-10 flex justify-between items-center z-[100] text-white transition-all duration-500 py-4 md:py-5">
         <!-- Dynamic Header Background that appears on scroll -->
-        <div id="header-bg" class="absolute inset-0 bg-[#030303]/85 backdrop-blur-xl border-b border-white/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
-        
-        <a href="#hero" class="font-display font-extrabold text-2xl tracking-tighter cursor-hover-target flex items-center gap-2 relative z-10 drop-shadow-lg">
+        <div id="header-bg"
+            class="absolute inset-0 bg-[#030303]/85 backdrop-blur-xl border-b border-white/10 transition-opacity duration-500 pointer-events-none">
+        </div>
+
+        <a href="#hero"
+            class="font-display font-extrabold text-2xl tracking-tighter cursor-hover-target flex items-center gap-2 relative z-10 drop-shadow-lg">
             <span>ATPHIX</span>
             <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
         </a>
-        <nav class="hidden lg:flex items-center gap-10 bg-black/40 backdrop-blur-md px-8 py-3 rounded-full border border-white/10 relative z-10 drop-shadow-lg">
-            <a href="#vision" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">01 / Vision</a>
-            <a href="#expertise" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">02 / Expertise</a>
-            <a href="#architectures" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">03 / Architectures</a>
-            <a href="#vault" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">04 / Vault</a>
-            <a href="#about" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">05 / About Us</a>
-            <a href="#contact" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">06 / Contact</a>
+        <nav
+            class="hidden lg:flex items-center gap-6 bg-black/50 backdrop-blur-md px-7 py-3 rounded-full border border-white/10 relative z-10 drop-shadow-lg">
+            <a href="#vision"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">01
+                / Vision</a>
+            <a href="#expertise"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">02
+                / Services</a>
+            <a href="#architectures"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">03
+                / Products</a>
+            <a href="#vault"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">04
+                / Impact</a>
+            <a href="#pipeline"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">05
+                / Methodology</a>
+            <a href="#about"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">06
+                / About Us</a>
+            <a href="#contact"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">07
+                / Contact</a>
         </nav>
         <div class="flex items-center gap-4 relative z-10">
             <!-- Audio Toggle Control -->
-            <button id="audio-toggle" class="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors cursor-hover-target flex items-center justify-center text-xs backdrop-blur-md drop-shadow-lg" title="Toggle Audio Feedback">
+            <button id="audio-toggle"
+                class="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors cursor-hover-target flex items-center justify-center text-xs backdrop-blur-md drop-shadow-lg"
+                title="Toggle Audio Feedback">
                 <span id="audio-icon">🔇</span>
             </button>
-            <a href="#contact" class="magnetic-btn cursor-hover-target text-[10px] !py-3 !px-6 hidden sm:inline-flex drop-shadow-lg">
-                <span class="btn-text">Get In Touch</span>
+            <a href="#contact"
+                class="magnetic-btn cursor-hover-target text-[10px] !py-3 !px-6 hidden sm:inline-flex drop-shadow-lg"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                <span class="btn-text"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Get In
+                    Touch</span>
             </a>
         </div>
     </header>
@@ -422,79 +2378,201 @@
         </section>
 
         <!-- Phase 01: Vision & Metric Architecture Section -->
-        <section id="vision" class="relative w-full min-h-screen bg-[#030303] border-t border-white/10 flex flex-col justify-between overflow-hidden z-10 py-24 md:py-32">
+        <section id="vision"
+            class="relative w-full min-h-screen bg-[#030303] border-t border-white/10 flex flex-col justify-between overflow-hidden z-10 py-24 md:py-32">
             <div class="grid-bg"></div>
-            
+
             <div class="max-w-[1400px] mx-auto px-6 md:px-12 w-full relative z-10">
                 <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20">
                     <div>
-                        <span class="text-[10px] font-mono tracking-[0.3em] text-brand-accent uppercase block mb-3">[ PHASE 01 / THE PARADIGM ]</span>
-                        <h2 class="font-display font-bold text-4xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tighter uppercase reveal-text max-w-4xl">
-                            We do not adapt <br>to the future.
+                        <span class="text-[10px] font-mono tracking-[0.3em] text-brand-accent uppercase block mb-3">[
+                            PHASE 01 / THE PARADIGM ]</span>
+                        <h2 class="font-display font-bold text-4xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tighter uppercase reveal-text max-w-4xl"
+                            data-split="true">
+                            <div class="split-word">
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    B</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    U</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    I</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    L</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    D</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    I</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    N</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    G</div>
+                            </div>
+                            <div class="split-word">
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    I</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    N</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    T</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    E</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    L</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    L</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    I</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    G</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    E</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    N</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    T</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    <br>
+                                </div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    S</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    Y</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    S</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    T</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    E</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    M</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    S</div>
+                            </div>
+                            <div class="split-word">
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    F</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    O</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    R</div>
+                            </div>
+                            <div class="split-word">
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    T</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    H</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    E</div>
+                            </div>
                         </h2>
-                        <h2 class="font-display font-bold text-4xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tighter uppercase mt-2 reveal-text outline-text max-w-4xl">
-                            We engineer it.
+                        <h2 class="font-display font-bold text-4xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tighter uppercase mt-2 reveal-text outline-text max-w-4xl"
+                            data-split="true">
+                            <div class="split-word">
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    R</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    E</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    A</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    L</div>
+                            </div>
+                            <div class="split-word">
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    W</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    O</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    R</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    L</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    D</div>
+                                <div class="split-char"
+                                    style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                    .</div>
+                            </div>
                         </h2>
                     </div>
                     <div class="max-w-md lg:pt-12 border-l border-white/10 pl-6 md:pl-8">
-                        <p class="font-sans text-base md:text-xl font-light leading-relaxed text-white/70 reveal-text-simple">
-                            ATPHIX is an apex technology laboratory. We build autonomous AI architectures, hyper-scalable software ecosystems, and zero-latency infrastructure for enterprises disrupting global paradigms.
+                        <p
+                            class="font-sans text-base md:text-xl font-light leading-relaxed text-white/70 reveal-text-simple">
+                            ATPHIX Technologies (Est. 2024, Solapur, India) is an AI, Software &amp; Automation
+                            Solutions Company. Engineered for impact, we transform code into real-world enterprise &amp;
+                            municipal solutions.
                         </p>
                     </div>
                 </div>
 
-                <!-- Live Algorithmic Metrics Counter Grid -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 my-16">
-                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden group">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <span class="font-mono text-xs text-white/40 uppercase block mb-3">BENCHMARK 01</span>
-                        <div class="font-display font-extrabold text-3xl lg:text-4xl xl:text-5xl text-white tracking-tighter mb-2 metric-number" data-target="99.98" data-suffix="%">0.00%</div>
-                        <span class="text-xs font-sans text-white/60">Algorithmic Efficiency Rate</span>
-                    </div>
 
-                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden group">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <span class="font-mono text-xs text-white/40 uppercase block mb-3">BENCHMARK 02</span>
-                        <div class="font-display font-extrabold text-3xl lg:text-4xl xl:text-5xl text-white tracking-tighter mb-2 metric-number" data-target="10" data-suffix="x+">0x</div>
-                        <span class="text-xs font-sans text-white/60">Deployment Speed Amplification</span>
-                    </div>
-
-                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden group">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <span class="font-mono text-xs text-white/40 uppercase block mb-3">BENCHMARK 03</span>
-                        <div class="font-display font-extrabold text-3xl lg:text-4xl xl:text-5xl text-white tracking-tighter mb-2 metric-number" data-target="4.2" data-suffix="M">0M</div>
-                        <span class="text-xs font-sans text-white/60">Autonomous Inferences / Sec</span>
-                    </div>
-
-                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden group">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <span class="font-mono text-xs text-white/40 uppercase block mb-3">BENCHMARK 04</span>
-                        <div class="font-display font-extrabold text-3xl lg:text-4xl xl:text-5xl text-white tracking-tighter mb-2 metric-number" data-target="0.00" data-suffix="ms">0ms</div>
-                        <span class="text-xs font-sans text-white/60">Zero-Touch Pipeline Latency</span>
-                    </div>
-                </div>
 
                 <!-- Strategic Philosophy Pillars -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-white/10">
                     <div class="p-6">
-                        <div class="font-mono text-xs text-brand-accent mb-4">[ PILLAR I ]</div>
-                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Autonomous Determinism</h3>
+                        <div class="font-mono text-xs text-brand-accent mb-4">[ CORE VISION ]</div>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Engineered for Impact</h3>
                         <p class="font-sans text-sm text-white/60 leading-relaxed">
-                            Replacing manual operational loops with deterministic agentic networks that reason, execute, and self-correct without human latency.
+                            Developing production-grade AI and automated systems that deliver direct real-world
+                            improvements for municipalities, institutions, and enterprises.
                         </p>
                     </div>
                     <div class="p-6">
-                        <div class="font-mono text-xs text-brand-cyan mb-4">[ PILLAR II ]</div>
-                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Cognitive Architecture</h3>
+                        <div class="font-mono text-xs text-brand-cyan mb-4">[ CORE TECH ]</div>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Computer Vision &amp; Edge
+                            AI</h3>
                         <p class="font-sans text-sm text-white/60 leading-relaxed">
-                            Deep neural models fused directly into edge infrastructure, turning raw streaming enterprise data into real-time competitive advantage.
+                            Deploying ANPR, real-time vehicle intelligence, and automated tracking systems directly onto
+                            low-latency edge environments.
                         </p>
                     </div>
                     <div class="p-6">
-                        <div class="font-mono text-xs text-emerald-400 mb-4">[ PILLAR III ]</div>
-                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Cinematic Precision</h3>
+                        <div class="font-mono text-xs text-emerald-400 mb-4">[ INTEGRATION ]</div>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Digital Transformation</h3>
                         <p class="font-sans text-sm text-white/60 leading-relaxed">
-                            High-performance digital products engineered with GPU-accelerated elegance, ensuring brand interactions leave indelible impressions.
+                            Bridging complex legal, municipal, and academic operational workflows into modern full-stack
+                            mobile and web applications.
                         </p>
                     </div>
                 </div>
@@ -502,124 +2580,559 @@
         </section>
 
         <!-- Phase 02: Expertise & Capabilities (Horizontal Scroll) -->
-        <section id="expertise" class="relative w-full h-screen bg-[#030303] overflow-hidden border-t border-white/10 flex items-center">
-            <div class="absolute top-16 left-6 md:left-12 z-20">
-                <span class="font-mono text-xs text-brand-accent tracking-[0.3em] uppercase block mb-3">[ PHASE 02 / EXPERTISE ]</span>
-                <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white reveal-text">Core Vectors</h2>
-            </div>
-            
-            <!-- Horizontal track container -->
-            <div id="horizontal-container" class="flex h-[60vh] px-6 md:px-32 items-center gap-8 md:gap-16 w-[max-content] relative z-10 mt-20">
-                
-                <!-- Card 1 -->
-                <div class="w-[300px] md:w-[450px] h-full glass-panel rounded-3xl p-8 flex flex-col justify-between hover:border-brand-accent/50 transition-colors group cursor-hover-target shrink-0">
-                    <div class="w-12 h-12 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <div>
-                        <div class="font-mono text-xs text-brand-accent mb-4">01 // AUTONOMY</div>
-                        <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-4">Autonomous Agents</h3>
-                        <p class="font-sans text-sm text-white/60 leading-relaxed">Multi-agent LLM systems that plan, execute, and self-correct complex enterprise workflows without human latency.</p>
-                    </div>
+        <div class="pin-spacer"
+            style="order: 0; place-self: auto; grid-area: auto; z-index: auto; float: none; flex-shrink: 1; display: flex; margin: 0px; inset: 0px; position: relative; flex-basis: auto; overflow: visible; box-sizing: border-box; width: 439px; height: 2005px; padding: 0px 0px 1065px;">
+            <section id="expertise"
+                class="relative w-full h-screen bg-[#030303] overflow-hidden border-t border-white/10 flex items-center"
+                style="translate: none; rotate: none; scale: none; inset: 0px auto auto 0px; margin: 0px; max-width: 439.2px; width: 439.2px; max-height: 940px; height: 940px; padding: 0px; transform: translate(0px, 0px);">
+                <div class="absolute top-16 left-6 md:left-12 z-20">
+                    <span class="font-mono text-xs text-brand-accent tracking-[0.3em] uppercase block mb-3">[ PHASE 02 /
+                        CORE SERVICES ]</span>
+                    <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white reveal-text"
+                        data-split="true">
+                        <div class="split-word">
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                W</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                H</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                A</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                T</div>
+                        </div>
+                        <div class="split-word">
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                W</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                E</div>
+                        </div>
+                        <div class="split-word">
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                E</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                N</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                G</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                I</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                N</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                E</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                E</div>
+                            <div class="split-char"
+                                style="translate: none; rotate: none; scale: none; transform-origin: 0% 50%; opacity: 1; transform: translate(0px, 0px);">
+                                R</div>
+                        </div>
+                    </h2>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="w-[300px] md:w-[450px] h-full glass-panel rounded-3xl p-8 flex flex-col justify-between hover:border-brand-cyan/50 transition-colors group cursor-hover-target shrink-0">
-                    <div class="w-12 h-12 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <!-- Horizontal track container with innovative high-tech visual cards -->
+                <div id="horizontal-container"
+                    class="flex h-[65vh] min-h-[460px] px-6 md:px-32 items-center gap-8 md:gap-12 w-[max-content] relative z-10 mt-16"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+
+                    <!-- Service 1: AI & Vision Systems -->
+                    <div
+                        class="w-[340px] md:w-[480px] h-full rounded-3xl relative overflow-hidden border border-white/10 hover:border-brand-accent transition-all duration-500 group cursor-hover-target shrink-0 flex flex-col justify-between p-8 bg-[#0a0a0c]">
+                        <!-- Background Visual Image with Dark Cyber Gradient Overlay -->
+                        <img src="./assets/service_ai_vision.png" alt="AI &amp; Vision Systems"
+                            class="absolute inset-0 w-full h-full object-cover object-center opacity-35 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none">
+                        </div>
+
+                        <!-- Top HUD Status -->
+                        <div class="relative z-10 flex justify-between items-center">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-brand-accent/20 border border-brand-accent/40 backdrop-blur-md flex items-center justify-center text-brand-accent shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="font-mono text-[10px] tracking-widest text-brand-accent uppercase px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/30 backdrop-blur-md">
+                                SYSTEM // 01
+                            </span>
+                        </div>
+
+                        <!-- Bottom Content Header & Details -->
+                        <div class="relative z-10 pt-16">
+                            <div class="font-mono text-xs text-brand-accent tracking-widest uppercase mb-2">NEURAL
+                                MATRIX &amp; ANALYTICS</div>
+                            <h3
+                                class="font-display font-bold text-2xl md:text-4xl text-white uppercase mb-4 group-hover:text-brand-accent transition-colors">
+                                AI &amp; Vision Systems</h3>
+                            <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
+                                Custom computer vision models, live video analytics, object detection, and spatial
+                                recognition systems engineered for zero-latency industrial and civic environments.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Object
+                                    Tracking</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Video
+                                    Analytics</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Spatial
+                                    AI</span>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="font-mono text-xs text-brand-cyan mb-4">02 // INFRASTRUCTURE</div>
-                        <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-4">Neural Architecture</h3>
-                        <p class="font-sans text-sm text-white/60 leading-relaxed">Deploying deterministic AI directly into edge environments for zero-latency, high-security inferences.</p>
+
+                    <!-- Service 2: Workforce Automation -->
+                    <div
+                        class="w-[340px] md:w-[480px] h-full rounded-3xl relative overflow-hidden border border-white/10 hover:border-brand-cyan transition-all duration-500 group cursor-hover-target shrink-0 flex flex-col justify-between p-8 bg-[#0a0a0c]">
+                        <!-- Background Visual Image with Dark Cyber Gradient Overlay -->
+                        <img src="./assets/service_workforce.png" alt="Workforce Automation"
+                            class="absolute inset-0 w-full h-full object-cover object-center opacity-35 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none">
+                        </div>
+
+                        <!-- Top HUD Status -->
+                        <div class="relative z-10 flex justify-between items-center">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-brand-cyan/20 border border-brand-cyan/40 backdrop-blur-md flex items-center justify-center text-brand-cyan shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <span
+                                class="font-mono text-[10px] tracking-widest text-brand-cyan uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 backdrop-blur-md">
+                                SYSTEM // 02
+                            </span>
+                        </div>
+
+                        <!-- Bottom Content Header & Details -->
+                        <div class="relative z-10 pt-16">
+                            <div class="font-mono text-xs text-brand-cyan tracking-widest uppercase mb-2">TELEMETRY
+                                &amp; GEOLOCATION</div>
+                            <h3
+                                class="font-display font-bold text-2xl md:text-4xl text-white uppercase mb-4 group-hover:text-brand-cyan transition-colors">
+                                Workforce Automation</h3>
+                            <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
+                                Real-time attendance, GPS verification, geofenced route mapping, and automated field
+                                management suites built for municipal corporations and enterprise staff.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">GPS
+                                    Geofencing</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Live
+                                    Telemetry</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Sanitation
+                                    Audit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: Edge AI Platforms -->
+                    <div
+                        class="w-[340px] md:w-[480px] h-full rounded-3xl relative overflow-hidden border border-white/10 hover:border-emerald-400 transition-all duration-500 group cursor-hover-target shrink-0 flex flex-col justify-between p-8 bg-[#0a0a0c]">
+                        <!-- Background Visual Image with Dark Cyber Gradient Overlay -->
+                        <img src="./assets/service_edge.png" alt="Edge AI Platforms"
+                            class="absolute inset-0 w-full h-full object-cover object-center opacity-35 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none">
+                        </div>
+
+                        <!-- Top HUD Status -->
+                        <div class="relative z-10 flex justify-between items-center">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 backdrop-blur-md flex items-center justify-center text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="font-mono text-[10px] tracking-widest text-emerald-400 uppercase px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-md">
+                                SYSTEM // 03
+                            </span>
+                        </div>
+
+                        <!-- Bottom Content Header & Details -->
+                        <div class="relative z-10 pt-16">
+                            <div class="font-mono text-xs text-emerald-400 tracking-widest uppercase mb-2">EDGE
+                                COMPUTING &amp; ANPR</div>
+                            <h3
+                                class="font-display font-bold text-2xl md:text-4xl text-white uppercase mb-4 group-hover:text-emerald-400 transition-colors">
+                                Edge AI Platforms</h3>
+                            <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
+                                Edge-deployed ANPR (Automatic Number Plate Recognition), smart campus entry
+                                surveillance, vehicle analytics, and autonomous infrastructure hardware triggers.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">ANPR
+                                    Engine</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Edge
+                                    Hardware</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Smart
+                                    Gate AI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Custom Apps & ERP -->
+                    <div
+                        class="w-[340px] md:w-[480px] h-full rounded-3xl relative overflow-hidden border border-white/10 hover:border-amber-400 transition-all duration-500 group cursor-hover-target shrink-0 flex flex-col justify-between p-8 bg-[#0a0a0c]">
+                        <!-- Background Visual Image with Dark Cyber Gradient Overlay -->
+                        <img src="./assets/service_erp.png" alt="Custom Apps &amp; ERP"
+                            class="absolute inset-0 w-full h-full object-cover object-center opacity-35 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none">
+                        </div>
+
+                        <!-- Top HUD Status -->
+                        <div class="relative z-10 flex justify-between items-center">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 backdrop-blur-md flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <span
+                                class="font-mono text-[10px] tracking-widest text-amber-400 uppercase px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 backdrop-blur-md">
+                                SYSTEM // 04
+                            </span>
+                        </div>
+
+                        <!-- Bottom Content Header & Details -->
+                        <div class="relative z-10 pt-16">
+                            <div class="font-mono text-xs text-amber-400 tracking-widest uppercase mb-2">FULL-STACK
+                                &amp; ENTERPRISE</div>
+                            <h3
+                                class="font-display font-bold text-2xl md:text-4xl text-white uppercase mb-4 group-hover:text-amber-400 transition-colors">
+                                Custom Apps &amp; ERP</h3>
+                            <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
+                                Full-stack web applications, native cross-platform mobile apps, AI document generators,
+                                and institutional ERP suites designed for high scalability.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Academic
+                                    ERP</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Legal
+                                    AI Synthesis</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Mobile
+                                    &amp; Web</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
+        </div>
 
-                <!-- Card 3 -->
-                <div class="w-[300px] md:w-[450px] h-full glass-panel rounded-3xl p-8 flex flex-col justify-between hover:border-emerald-500/50 transition-colors group cursor-hover-target shrink-0">
-                    <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500 mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
-                    </div>
-                    <div>
-                        <div class="font-mono text-xs text-emerald-500 mb-4">03 // IMMERSION</div>
-                        <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-4">WebGL & 3D</h3>
-                        <p class="font-sans text-sm text-white/60 leading-relaxed">High-performance cinematic frontends leveraging custom shaders and particle physics for unforgettable digital presence.</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="w-[300px] md:w-[450px] h-full glass-panel rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500/50 transition-colors group cursor-hover-target shrink-0">
-                    <div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <div>
-                        <div class="font-mono text-xs text-amber-500 mb-4">04 // SYNTHESIS</div>
-                        <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-4">Legacy Bridging</h3>
-                        <p class="font-sans text-sm text-white/60 leading-relaxed">Wrapping antiquated monolithic systems in hyper-fast, modern API layers to unlock trapped proprietary data.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Phase 03: Architectural Ecosystems (Replaced Playground) -->
-        <section id="architectures" class="py-24 md:py-36 bg-[#030303] relative border-t border-white/10 overflow-hidden">
+        <!-- Phase 03: Flagship Real-World Products -->
+        <section id="architectures"
+            class="py-24 md:py-36 bg-[#030303] relative border-t border-white/10 overflow-hidden">
             <div class="grid-bg"></div>
             <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
                 <div class="flex flex-col lg:flex-row gap-16 items-start">
-                    <!-- Sticky Left Column -->
-                    <div class="lg:w-1/3 lg:sticky lg:top-32">
-                        <span class="font-mono text-xs text-brand-cyan tracking-widest uppercase block mb-3">[ PHASE 03 / ARCHITECTURAL ECOSYSTEMS ]</span>
-                        <h2 class="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight text-white mb-6">Workflow<br>Synthetics</h2>
-                        <p class="font-sans text-sm text-white/60 leading-relaxed mb-8">
-                            We bridge the gap between theoretical AI models and production-ready enterprise workflows. Our customized architectures eliminate operational debt and scale intelligent automation across your entire digital surface.
-                        </p>
-                        <a href="#initiate" class="font-mono text-xs text-brand-accent tracking-widest uppercase hover:text-white transition-colors cursor-hover-target flex items-center gap-2">
-                            Deploy Custom Architecture <span class="text-lg">→</span>
-                        </a>
+                    <!-- Sticky Left Column Header & Overview -->
+                    <div class="lg:w-1/3 lg:sticky lg:top-28 space-y-6">
+                        <div class="glass-panel p-8 rounded-3xl border border-white/10 relative overflow-hidden">
+                            <div
+                                class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent via-brand-cyan to-emerald-400">
+                            </div>
+
+                            <span class="font-mono text-xs text-brand-cyan tracking-widest uppercase block mb-3">[ PHASE
+                                03 / FLAGSHIP SOLUTIONS ]</span>
+                            <h2
+                                class="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight text-white mb-4">
+                                Real-World<br><span class="outline-text">Products</span></h2>
+                            <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
+                                Battle-tested proprietary software built by ATPHIX to solve mission-critical municipal,
+                                security, legal, and educational infrastructure challenges.
+                            </p>
+
+                            <div class="pt-6 border-t border-white/10 space-y-3">
+                                <div class="flex items-center justify-between font-mono text-xs">
+                                    <span class="text-white/40">FLAGSHIP UNITS</span>
+                                    <span class="text-brand-accent font-bold">04 DEPLOYABLE SUITES</span>
+                                </div>
+                                <div class="flex items-center justify-between font-mono text-xs">
+                                    <span class="text-white/40">PRIMARY DEPLOYMENT</span>
+                                    <span class="text-emerald-400 font-bold">SOLAPUR, MH</span>
+                                </div>
+                                <div class="flex items-center justify-between font-mono text-xs">
+                                    <span class="text-white/40">CORE ARCHITECTURE</span>
+                                    <span class="text-brand-cyan font-bold">EDGE AI + FULL-STACK</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Quick Navigator Box -->
+                        <div class="glass-panel p-6 rounded-3xl border border-white/10 space-y-3">
+                            <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest block mb-2">//
+                                QUICK PRODUCT INDEX</span>
+
+                            <div
+                                class="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors flex items-center justify-between group">
+                                <span
+                                    class="font-mono text-xs text-white/80 group-hover:text-brand-accent font-medium">01.
+                                    Sweeper Tracker</span>
+                                <span
+                                    class="font-mono text-[9px] px-2 py-0.5 rounded bg-brand-accent/20 text-brand-accent">CIVIC</span>
+                            </div>
+
+                            <div
+                                class="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-brand-cyan/50 transition-colors flex items-center justify-between group">
+                                <span
+                                    class="font-mono text-xs text-white/80 group-hover:text-brand-cyan font-medium">02.
+                                    Campus Vehicle Intelligence</span>
+                                <span
+                                    class="font-mono text-[9px] px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan">ANPR</span>
+                            </div>
+
+                            <div
+                                class="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/50 transition-colors flex items-center justify-between group">
+                                <span
+                                    class="font-mono text-xs text-white/80 group-hover:text-emerald-400 font-medium">03.
+                                    Written Say Generator</span>
+                                <span
+                                    class="font-mono text-[9px] px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-400">LEGAL
+                                    AI</span>
+                            </div>
+
+                            <div
+                                class="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-amber-400/50 transition-colors flex items-center justify-between group">
+                                <span class="font-mono text-xs text-white/80 group-hover:text-amber-400 font-medium">04.
+                                    Institutional ERP</span>
+                                <span
+                                    class="font-mono text-[9px] px-2 py-0.5 rounded bg-amber-400/20 text-amber-400">ACADEMIC</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Button Card -->
+                        <div
+                            class="p-6 rounded-3xl bg-gradient-to-br from-brand-accent/20 via-transparent to-brand-cyan/20 border border-white/10 flex flex-col items-start gap-4">
+                            <div>
+                                <span
+                                    class="font-mono text-[10px] text-brand-accent font-bold uppercase block mb-1">NEED
+                                    CUSTOM PRODUCT BUILD?</span>
+                                <p class="text-xs text-white/70">Engineered specifically to match your organization's
+                                    workflow requirement.</p>
+                            </div>
+                            <a href="#contact"
+                                class="magnetic-btn cursor-hover-target text-[10px] !py-3 !px-6 w-full text-center">
+                                <span class="btn-text">Request Live Demo →</span>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Scrolling Right Column -->
-                    <div class="lg:w-2/3 flex flex-col gap-6">
-                        <!-- Stack Item 1 -->
-                        <div class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-brand-accent/50 transition-colors group cursor-hover-target">
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="w-12 h-12 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent mb-4">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                                </div>
-                                <span class="font-mono text-xs text-white/30 group-hover:text-brand-accent transition-colors">01</span>
+                    <!-- Organized Product Suite Cards -->
+                    <div class="lg:w-2/3 flex flex-col gap-8">
+                        <!-- Product 1: Sweeper Tracker -->
+                        <div
+                            class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-brand-accent/60 transition-all duration-300 group cursor-hover-target relative overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 px-4 py-1.5 bg-brand-accent/20 border-b border-l border-brand-accent/30 rounded-bl-2xl font-mono text-[10px] text-brand-accent font-semibold tracking-wider">
+                                MUNICIPAL DEPLOYMENT
                             </div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Agentic Task Orchestration</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed">
-                                Deployment of multi-agent LLM systems capable of reasoning, planning, and executing complex multi-step workflows. Automate procurement, customer support triaging, and dynamic resource allocation without human intervention.
-                            </p>
-                        </div>
-                        
-                        <!-- Stack Item 2 -->
-                        <div class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-brand-cyan/50 transition-colors group cursor-hover-target">
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="w-12 h-12 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan mb-4">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center text-brand-accent">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
                                 </div>
-                                <span class="font-mono text-xs text-white/30 group-hover:text-brand-cyan transition-colors">02</span>
+                                <div>
+                                    <span class="font-mono text-xs text-brand-accent uppercase block">Flagship Solution
+                                        // 01</span>
+                                    <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase">Sweeper
+                                        Tracker</h3>
+                                </div>
                             </div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Enterprise RAG Ecosystems</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed">
-                                Secure, localized Retrieval-Augmented Generation (RAG) pipelines that turn your proprietary databases and documents into contextual neural memory, providing real-time, hallucinatory-free intelligence to your workforce.
+                            <p class="font-sans text-sm md:text-base text-white/70 leading-relaxed mb-6">
+                                Real-time municipal workforce monitoring &amp; verification system designed to
+                                streamline sanitation tracking, geolocation verification, attendance control, and
+                                operational transparency across civic municipal zones.
                             </p>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Geolocation
+                                    Verification</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Workforce
+                                    Analytics</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Civic
+                                    Dashboard</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Automated
+                                    Audit Logs</span>
+                            </div>
                         </div>
 
-                        <!-- Stack Item 3 -->
-                        <div class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-emerald-500/50 transition-colors group cursor-hover-target">
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500 mb-4">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                </div>
-                                <span class="font-mono text-xs text-white/30 group-hover:text-emerald-500 transition-colors">03</span>
+                        <!-- Product 2: Campus Vehicle Intelligence -->
+                        <div
+                            class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-brand-cyan/60 transition-all duration-300 group cursor-hover-target relative overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 px-4 py-1.5 bg-brand-cyan/20 border-b border-l border-brand-cyan/30 rounded-bl-2xl font-mono text-[10px] text-brand-cyan font-semibold tracking-wider">
+                                EDGE AI / ANPR
                             </div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Legacy API Bridging</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed">
-                                Modernizing antiquated mainframe and monolithic infrastructures by wrapping them in hyper-fast, secure API layers. We establish frictionless data pipelines connecting legacy systems to modern neural engines.
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-brand-cyan/20 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 014 0m6 0a2 2 0 104 0m-4 0a2 2 0 014 0">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="font-mono text-xs text-brand-cyan uppercase block">Flagship Solution //
+                                        02</span>
+                                    <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase">Campus
+                                        Vehicle Intelligence</h3>
+                                </div>
+                            </div>
+                            <p class="font-sans text-sm md:text-base text-white/70 leading-relaxed mb-6">
+                                Edge AI vehicle detection, Automatic Number Plate Recognition (ANPR), and automated
+                                parking analytics built to secure gate access, count capacity, and optimize traffic in
+                                high-density educational and corporate campuses.
                             </p>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Edge
+                                    Computer Vision</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">ANPR
+                                    OCR Engine</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Parking
+                                    Analytics</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Automated
+                                    Gates</span>
+                            </div>
+                        </div>
+
+                        <!-- Product 3: Written Say Generator -->
+                        <div
+                            class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-emerald-500/60 transition-all duration-300 group cursor-hover-target relative overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 px-4 py-1.5 bg-emerald-500/20 border-b border-l border-emerald-500/30 rounded-bl-2xl font-mono text-[10px] text-emerald-400 font-semibold tracking-wider">
+                                LEGAL AI SYNTHESIS
+                            </div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="font-mono text-xs text-emerald-400 uppercase block">Flagship Solution
+                                        // 03</span>
+                                    <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase">Written
+                                        Say Generator</h3>
+                                </div>
+                            </div>
+                            <p class="font-sans text-sm md:text-base text-white/70 leading-relaxed mb-6">
+                                AI-powered legal document generation platform designed to automate the synthesis of
+                                written legal statements, structured case replies, and legal documentation—reducing
+                                drafting timelines from hours to seconds.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Natural
+                                    Language Synthesis</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Legal
+                                    Draft Automation</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Clause
+                                    Extraction</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">High-Speed
+                                    Response</span>
+                            </div>
+                        </div>
+
+                        <!-- Product 4: Institutional ERP & Feedback System -->
+                        <div
+                            class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-amber-500/60 transition-all duration-300 group cursor-hover-target relative overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 px-4 py-1.5 bg-amber-500/20 border-b border-l border-amber-500/30 rounded-bl-2xl font-mono text-[10px] text-amber-400 font-semibold tracking-wider">
+                                ACADEMIC MANAGEMENT
+                            </div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="font-mono text-xs text-amber-400 uppercase block">Flagship Solution //
+                                        04</span>
+                                    <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase">
+                                        Institutional ERP &amp; Feedback System</h3>
+                                </div>
+                            </div>
+                            <p class="font-sans text-sm md:text-base text-white/70 leading-relaxed mb-6">
+                                Custom academic management platform delivering automated student feedback loops,
+                                administrative workflow digitization, institutional analytics, and centralized campus
+                                operation portals.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Institutional
+                                    ERP</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Feedback
+                                    Engine</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Academic
+                                    Analytics</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">Admin
+                                    Workflow</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -631,73 +3144,80 @@
             <div class="max-w-[1400px] mx-auto px-6 md:px-12">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div>
-                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 04 / IMPACT VAULT ]</span>
-                        <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">Selected Deployments</h2>
+                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE
+                            04 / IMPACT VAULT ]</span>
+                        <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">
+                            Selected Deployments</h2>
                     </div>
-                    <span class="font-mono text-xs text-white/40 uppercase tracking-widest">[ DEPLOYED ARCHITECTURES: 2024 - 2026 ]</span>
+                    <span class="font-mono text-xs text-white/40 uppercase tracking-widest">[ REAL-WORLD IMPACT: 2024 -
+                        2026 ]</span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Case Study 1 -->
-                    <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between group hover:border-brand-accent transition-colors cursor-hover-target open-case-modal" 
-                         data-title="Project AETHER: Orbital Swarm Control"
-                         data-tag="[ AEROSPACE TELEMETRY ]"
-                         data-body="Engineered a decentralized real-time edge computing mesh for low-earth-orbit satellite fleets. The AI model reduced telemetry synchronization delays from 420ms to 4.1ms while maintaining zero packet loss over degraded RF links.">
+                    <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between group hover:border-brand-accent transition-colors cursor-hover-target open-case-modal"
+                        data-title="Sweeper Tracker: Municipal Workforce Verification" data-tag="[ CIVIC AUTOMATION ]"
+                        data-body="Deployed for Solapur Municipal Corporation. Real-time geo-tracking and verification system for city sanitation staff, providing transparent verification and automated reporting across municipal sectors.">
                         <div>
                             <div class="flex justify-between items-center mb-8 font-mono text-xs">
-                                <span class="text-brand-accent">[ 01 / AEROSPACE ]</span>
-                                <span class="text-white/40">2026</span>
+                                <span class="text-brand-accent">[ CIVIC TRANSFORMATION ]</span>
+                                <span class="text-white/40">2024 - 2026</span>
                             </div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-brand-accent transition-colors">AETHER / Swarm Edge Mesh</h3>
+                            <h3
+                                class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-brand-accent transition-colors">
+                                Solapur Municipal Tracker</h3>
                             <p class="font-sans text-sm text-white/60 leading-relaxed mb-8">
-                                Autonomous trajectory correction and decentralized satellite constellation synchronization.
+                                Automated workforce monitoring &amp; real-time verification for municipal operations.
                             </p>
                         </div>
                         <div class="pt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
-                            <span class="text-white/40">LATENCY REDUCTION</span>
-                            <span class="text-emerald-400 font-bold">-98.8%</span>
+                            <span class="text-white/40">GEO-ACCURACY</span>
+                            <span class="text-emerald-400 font-bold">100% VERIFIED</span>
                         </div>
                     </div>
 
                     <!-- Case Study 2 -->
                     <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between group hover:border-brand-cyan transition-colors cursor-hover-target open-case-modal"
-                         data-title="Project SYNAPSE: FinTech Neural Engine"
-                         data-tag="[ HIGH-FREQUENCY RISK ]"
-                         data-body="Designed sub-millisecond fraud detection algorithms handling over $14 Billion in daily transaction volume. Achieved a 99.98% accuracy score and prevented $180M+ in adversarial automated attacks in Q1 alone.">
+                        data-title="Campus Vehicle Intelligence System" data-tag="[ EDGE AI &amp; COMPUTER VISION ]"
+                        data-body="Engineered high-speed ANPR and vehicle tracking deployed on local edge hardware. Automated access control and live occupancy reporting for campus gates.">
                         <div>
                             <div class="flex justify-between items-center mb-8 font-mono text-xs">
-                                <span class="text-brand-cyan">[ 02 / FINTECH ]</span>
+                                <span class="text-brand-cyan">[ EDGE AI / ANPR ]</span>
                                 <span class="text-white/40">2025</span>
                             </div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-brand-cyan transition-colors">SYNAPSE / Real-time Fraud Matrix</h3>
+                            <h3
+                                class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-brand-cyan transition-colors">
+                                Campus Vehicle Intelligence</h3>
                             <p class="font-sans text-sm text-white/60 leading-relaxed mb-8">
-                                Sub-millisecond transaction risk evaluation and multi-vector threat prevention.
+                                Real-time vehicle detection &amp; automatic number plate recognition on edge hardware.
                             </p>
                         </div>
                         <div class="pt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
-                            <span class="text-white/40">DAILY VOLUME</span>
-                            <span class="text-brand-cyan font-bold">$14.2 BILLION</span>
+                            <span class="text-white/40">RECOGNITION SPEED</span>
+                            <span class="text-brand-cyan font-bold">&lt; 150 MS</span>
                         </div>
                     </div>
 
                     <!-- Case Study 3 -->
                     <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between group hover:border-amber-400 transition-colors cursor-hover-target open-case-modal"
-                         data-title="Project OMNI: Global Logistics Engine"
-                         data-tag="[ AUTONOMOUS LOGISTICS ]"
-                         data-body="Transformed a multinational supply chain network into an autonomous zero-touch pipeline. Replaced 14 static software tools with a unified self-healing agentic network.">
+                        data-title="Written Say Generator &amp; Institutional ERP"
+                        data-tag="[ AI LEGAL &amp; ACADEMIC ]"
+                        data-body="Designed custom legal document synthesis for rapid statement drafting alongside full-scale educational institution management software.">
                         <div>
                             <div class="flex justify-between items-center mb-8 font-mono text-xs">
-                                <span class="text-amber-400">[ 03 / LOGISTICS ]</span>
-                                <span class="text-white/40">2025</span>
+                                <span class="text-amber-400">[ AI &amp; ERP PLATFORMS ]</span>
+                                <span class="text-white/40">2025 - 2026</span>
                             </div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-amber-400 transition-colors">OMNI / Autonomous Supply Orchestrator</h3>
+                            <h3
+                                class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-amber-400 transition-colors">
+                                Legal &amp; Academic ERP</h3>
                             <p class="font-sans text-sm text-white/60 leading-relaxed mb-8">
-                                Self-healing supply chain routing and predictive inventory allocation across 40 countries.
+                                AI legal document generator and unified institutional management platform.
                             </p>
                         </div>
                         <div class="pt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
-                            <span class="text-white/40">OPERATIONAL SAVINGS</span>
-                            <span class="text-amber-400 font-bold">$42M / ANNUM</span>
+                            <span class="text-white/40">TIME SAVED</span>
+                            <span class="text-amber-400 font-bold">90% FASTER</span>
                         </div>
                     </div>
                 </div>
@@ -708,44 +3228,54 @@
         <section id="pipeline" class="py-24 md:py-36 bg-[#060608] border-t border-white/10 relative">
             <div class="max-w-[1400px] mx-auto px-6 md:px-12">
                 <div class="mb-20">
-                    <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 05 / ENGINEERING METHODOLOGY ]</span>
-                    <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">The Intelligence Pipeline</h2>
+                    <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 05 /
+                        ENGINEERING METHODOLOGY ]</span>
+                    <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">From
+                        Code to Real-World Solutions</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
                     <!-- Step 1 -->
                     <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
-                        <span class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-brand-accent transition-colors">01</span>
-                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Neural Audit</h3>
+                        <span
+                            class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-brand-accent transition-colors">01</span>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Problem Discovery</h3>
                         <p class="font-sans text-sm text-white/60 leading-relaxed">
-                            Deep analysis of existing enterprise data streams, vector bottlenecks, and computational architecture limits.
+                            Analyzing municipal, institutional, or enterprise operational bottlenecks to define clear
+                            technical objectives.
                         </p>
                     </div>
 
                     <!-- Step 2 -->
                     <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
-                        <span class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-brand-cyan transition-colors">02</span>
-                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Model Synthesis</h3>
+                        <span
+                            class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-brand-cyan transition-colors">02</span>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">AI System Design</h3>
                         <p class="font-sans text-sm text-white/60 leading-relaxed">
-                            Custom AI model training, agentic prompt graph engineering, and zero-latency backend synthesis.
+                            Engineering computer vision models, edge AI architectures, and full-stack software tailored
+                            for scale.
                         </p>
                     </div>
 
                     <!-- Step 3 -->
                     <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
-                        <span class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-emerald-400 transition-colors">03</span>
-                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Edge Sync</h3>
+                        <span
+                            class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-emerald-400 transition-colors">03</span>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Real-World Deployment</h3>
                         <p class="font-sans text-sm text-white/60 leading-relaxed">
-                            Seamless zero-downtime deployment into distributed cloud nodes and high-security edge endpoints.
+                            Deploying solutions on-site into active civic operations, campus gates, or legal management
+                            environments.
                         </p>
                     </div>
 
                     <!-- Step 4 -->
                     <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
-                        <span class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-amber-400 transition-colors">04</span>
-                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Self-Evolution</h3>
+                        <span
+                            class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-amber-400 transition-colors">04</span>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Continuous Refinement</h3>
                         <p class="font-sans text-sm text-white/60 leading-relaxed">
-                            Continuous autonomous feedback loops ensuring models auto-tune and refine accuracy over time.
+                            System optimization, feedback integration, and ongoing feature updates to maximize
+                            real-world impact.
                         </p>
                     </div>
                 </div>
@@ -755,60 +3285,182 @@
         <!-- Kinetic Brand Marquee Section -->
         <section class="py-10 md:py-14 bg-[#030303] overflow-hidden border-y border-white/10 relative">
             <div class="marquee-wrapper flex whitespace-nowrap opacity-90 cursor-hover-target z-10 relative">
-                <div class="marquee-inner text-2xl md:text-4xl font-display font-semibold uppercase tracking-wider text-white/80">
-                    <span class="mx-6 text-white font-bold">Pushing Boundaries</span><span class="mx-6 text-white/30">//</span>
-                    <span class="mx-6 text-brand-accent">Defining Standards</span><span class="mx-6 text-white/30">//</span>
-                    <span class="mx-6 text-white font-bold">Autonomous Future</span><span class="mx-6 text-white/30">//</span>
-                    <span class="mx-6 text-brand-cyan">Zero Latency</span><span class="mx-6 text-white/30">//</span>
-                    <span class="mx-6 text-white font-bold">Pushing Boundaries</span><span class="mx-6 text-white/30">//</span>
-                    <span class="mx-6 text-brand-accent">Defining Standards</span><span class="mx-6 text-white/30">//</span>
-                    <span class="mx-6 text-white font-bold">Autonomous Future</span><span class="mx-6 text-white/30">//</span>
-                    <span class="mx-6 text-brand-cyan">Zero Latency</span><span class="mx-6 text-white/30">//</span>
+                <div
+                    class="marquee-inner text-2xl md:text-4xl font-display font-semibold uppercase tracking-wider text-white/80">
+                    <span class="mx-6 text-white font-bold">ATPHIX Technologies</span><span
+                        class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-brand-accent">Building Intelligent Systems</span><span
+                        class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-white font-bold">Solapur, Maharashtra</span><span
+                        class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-brand-cyan">Engineered for Impact</span><span
+                        class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-white font-bold">ATPHIX Technologies</span><span
+                        class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-brand-accent">From Code to Real-World Solutions</span><span
+                        class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-white font-bold">Solapur, Maharashtra</span><span
+                        class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-brand-cyan">Engineered for Impact</span><span
+                        class="mx-6 text-white/30">//</span>
                 </div>
             </div>
         </section>
 
-        <!-- Phase 05: About Us Section -->
+        <!-- Phase 05: About Us & Leadership Section -->
         <section id="about" class="py-24 md:py-36 bg-[#030303] border-t border-white/10 relative overflow-hidden">
             <div class="grid-bg"></div>
             <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-                <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-16">
-                    <div class="lg:w-1/2">
-                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 05 / ABOUT ATPHIX ]</span>
-                        <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white mb-6">
-                            Architects of Autonomous Intelligence
+
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                    <div>
+                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE
+                            05 / ABOUT ATPHIX TECHNOLOGIES ]</span>
+                        <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">
+                            Engineered for Real-World Impact
                         </h2>
-                        <p class="font-sans text-base md:text-lg text-white/70 leading-relaxed mb-6">
-                            ATPHIX is a premiere AI engineering studio and software architecture company. We design, deploy, and scale custom autonomous agent ecosystems, deterministic neural software, and bespoke digital platforms for enterprise pioneers worldwide.
-                        </p>
-                        <p class="font-sans text-sm md:text-base text-white/50 leading-relaxed">
-                            By combining edge compute optimization, multi-agent orchestration, and WebGL precision, we strip away technological friction to build software that thinks, adapts, and executes in real time.
-                        </p>
+                    </div>
+                    <span class="font-mono text-xs text-white/40 uppercase tracking-widest">[ SOLAPUR, MAHARASHTRA //
+                        EST. 2024 ]</span>
+                </div>
+
+                <!-- Main Company Story & Quick Spec Cards -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+
+                    <!-- Left: Company Overview Narrative -->
+                    <div
+                        class="lg:col-span-7 glass-panel p-8 md:p-10 rounded-3xl border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <div class="font-mono text-xs text-brand-cyan uppercase mb-4">[ OUR IDENTITY &amp; PURPOSE ]
+                            </div>
+                            <h3
+                                class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-6 leading-snug">
+                                Transforming High-Level Code into Tangible Civic &amp; Enterprise Solutions
+                            </h3>
+                            <p class="font-sans text-base text-white/70 leading-relaxed mb-6">
+                                <strong class="text-white">ATPHIX Technologies</strong> (Est. 2024, Solapur,
+                                Maharashtra) is a specialized AI, Software &amp; Automation company engineered to solve
+                                complex operational challenges.
+                            </p>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed">
+                                We bridge the gap between advanced research and production-grade deployment—delivering
+                                municipal workforce tracking for Solapur Municipal Corporation, real-time edge AI
+                                vehicle recognition systems, AI legal statement drafting, and academic management ERP
+                                platforms.
+                            </p>
+                        </div>
+
+                        <!-- Core Pillars Tags -->
+                        <div class="flex flex-wrap gap-2 pt-8 mt-8 border-t border-white/10">
+                            <span
+                                class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-brand-accent">Artificial
+                                Intelligence</span>
+                            <span
+                                class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-brand-cyan">Computer
+                                Vision</span>
+                            <span
+                                class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-emerald-400">Edge
+                                AI Hardware</span>
+                            <span
+                                class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-amber-400">Workforce
+                                Telemetry</span>
+                        </div>
                     </div>
 
-                    <div class="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-                        <div class="glass-panel p-6 rounded-2xl">
-                            <span class="font-mono text-xs text-brand-cyan uppercase block mb-2">[ OUR CORE FOCUS ]</span>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Agentic Systems</h3>
-                            <p class="font-sans text-xs text-white/60 leading-relaxed">Self-healing multi-agent workflows built for continuous enterprise automation without human latency.</p>
+                    <!-- Right: Quick Company Spec Grid -->
+                    <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div
+                            class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-brand-accent/40 transition-colors">
+                            <span class="font-mono text-[10px] text-brand-accent uppercase block mb-2">[ COMPANY TYPE
+                                ]</span>
+                            <h4 class="font-display font-bold text-xl text-white uppercase mb-1">AI &amp; Automation
+                            </h4>
+                            <p class="font-sans text-xs text-white/50 leading-relaxed">Enterprise software, vision
+                                models &amp; IoT verification systems.</p>
                         </div>
-                        <div class="glass-panel p-6 rounded-2xl">
-                            <span class="font-mono text-xs text-brand-accent uppercase block mb-2">[ OUR COMMITMENT ]</span>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Zero Latency</h3>
-                            <p class="font-sans text-xs text-white/60 leading-relaxed">Sub-millisecond model inferences embedded directly at the edge for maximum speed and security.</p>
+
+                        <div
+                            class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-brand-cyan/40 transition-colors">
+                            <span class="font-mono text-[10px] text-brand-cyan uppercase block mb-2">[ FOUNDED ]</span>
+                            <h4 class="font-display font-bold text-xl text-white uppercase mb-1">2024</h4>
+                            <p class="font-sans text-xs text-white/50 leading-relaxed">Headquartered in Solapur,
+                                Maharashtra, India.</p>
                         </div>
-                        <div class="glass-panel p-6 rounded-2xl">
-                            <span class="font-mono text-xs text-emerald-400 uppercase block mb-2">[ OUR METRICS ]</span>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">99.9% Precision</h3>
-                            <p class="font-sans text-xs text-white/60 leading-relaxed">Deterministic neural graphs engineered for hallucination-free enterprise knowledge deployment.</p>
+
+                        <div
+                            class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-emerald-400/40 transition-colors">
+                            <span class="font-mono text-[10px] text-emerald-400 uppercase block mb-2">[ HQ LOCATION
+                                ]</span>
+                            <h4 class="font-display font-bold text-xl text-white uppercase mb-1">Solapur, India</h4>
+                            <p class="font-sans text-xs text-white/50 leading-relaxed">Serving municipal corporations,
+                                educational institutions &amp; businesses.</p>
                         </div>
-                        <div class="glass-panel p-6 rounded-2xl">
-                            <span class="font-mono text-xs text-amber-400 uppercase block mb-2">[ OUR STANDARDS ]</span>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Awwwards Grade</h3>
-                            <p class="font-sans text-xs text-white/60 leading-relaxed">Cinematic design systems and WebGL graphics crafted with agency-level aesthetic excellence.</p>
+
+                        <div
+                            class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-amber-400/40 transition-colors">
+                            <span class="font-mono text-[10px] text-amber-400 uppercase block mb-2">[ IMPACT TARGET
+                                ]</span>
+                            <h4 class="font-display font-bold text-xl text-white uppercase mb-1">Real-World Utility</h4>
+                            <p class="font-sans text-xs text-white/50 leading-relaxed">100% focused on active field
+                                operations and production deployment.</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Founder & Leadership Spotlight Block -->
+                <div
+                    class="glass-panel p-8 md:p-12 rounded-3xl border border-brand-accent/40 relative overflow-hidden mb-12">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/10 rounded-full filter blur-3xl pointer-events-none">
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                        <div class="lg:col-span-7">
+                            <div
+                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/30 font-mono text-[10px] text-brand-accent uppercase mb-4">
+                                <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span>
+                                LEADERSHIP &amp; SYSTEMS ARCHITECTURE
+                            </div>
+                            <h3 class="font-display font-extrabold text-3xl md:text-5xl text-white uppercase mb-2">
+                                Shubham Musale</h3>
+                            <span class="font-mono text-sm text-brand-cyan block mb-6 font-semibold">Founder &amp; Lead
+                                Systems Architect</span>
+
+                            <p class="font-sans text-sm md:text-base text-white/70 leading-relaxed mb-6">
+                                AI/ML &amp; Full-Stack Engineer specializing in production-grade AI systems, computer
+                                vision algorithms, and large-scale automation architectures. Shubham has architected and
+                                deployed critical municipal systems for Solapur Municipal Corporation alongside
+                                specialized legal AI and educational platforms.
+                            </p>
+                        </div>
+
+                        <!-- Core Team Collaborators Card -->
+                        <div class="lg:col-span-5 bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
+                            <span class="font-mono text-xs text-brand-accent uppercase tracking-widest block mb-4">[
+                                CORE ENGINEERING TEAM ]</span>
+                            <div class="space-y-3 font-sans text-sm text-white/80">
+                                <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                    <span class="font-semibold text-white">Vinod Kudkyal</span>
+                                    <span class="font-mono text-xs text-white/40">Collaborator</span>
+                                </div>
+                                <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                    <span class="font-semibold text-white">Aditya</span>
+                                    <span class="font-mono text-xs text-white/40">Collaborator</span>
+                                </div>
+                                <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                                    <span class="font-semibold text-white">Akash</span>
+                                    <span class="font-mono text-xs text-white/40">Collaborator</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-white">Kartikesh</span>
+                                    <span class="font-mono text-xs text-white/40">Collaborator</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -816,46 +3468,58 @@
         <section id="contact" class="py-24 md:py-36 bg-[#060608] border-t border-white/10 relative">
             <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 06 / CONTACT US ]</span>
+                    <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 06 /
+                        CONTACT ATPHIX ]</span>
                     <h2 class="font-display text-4xl md:text-7xl font-bold uppercase tracking-tight text-white mb-6">
-                        Let's Engineer The Future
+                        Get In Touch
                     </h2>
                     <p class="font-sans text-base md:text-xl text-white/60">
-                        Have a complex technical challenge, AI initiative, or software vision? Connect directly with our core engineering leadership.
+                        Ready to deploy custom AI, workforce automation, or custom software for your organization?
+                        Connect with ATPHIX Technologies.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                     <!-- Contact Option 1 -->
-                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-accent transition-colors group cursor-hover-target">
+                    <div
+                        class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-accent transition-colors group cursor-hover-target">
                         <div>
-                            <span class="font-mono text-xs text-brand-accent uppercase block mb-4">[ DIRECT INQUIRIES ]</span>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Enterprise Sales & Audit</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Discuss project scope, system architectures, or schedule an executive technical assessment.</p>
+                            <span class="font-mono text-xs text-brand-accent uppercase block mb-4">[ EMAIL INQUIRIES
+                                ]</span>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Direct Email</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Reach out for project
+                                consultations, municipal proposals, or custom AI software inquiries.</p>
                         </div>
-                        <a href="mailto:hello@atphix.com" class="font-mono text-xs text-white group-hover:text-brand-accent transition-colors flex items-center gap-2">
+                        <a href="mailto:hello@atphix.com"
+                            class="font-mono text-xs text-white group-hover:text-brand-accent transition-colors flex items-center gap-2 font-bold">
                             hello@atphix.com <span class="text-base">→</span>
                         </a>
                     </div>
 
                     <!-- Contact Option 2 -->
-                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-cyan transition-colors group cursor-hover-target">
+                    <div
+                        class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-cyan transition-colors group cursor-hover-target">
                         <div>
-                            <span class="font-mono text-xs text-brand-cyan uppercase block mb-4">[ PARTNERSHIPS ]</span>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Ventures & Research</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Collaborate on neural AI research, co-development, or strategic technology integration.</p>
+                            <span class="font-mono text-xs text-brand-cyan uppercase block mb-4">[ DIRECT CALL ]</span>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Phone Contact</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Speak directly with our team
+                                for urgent inquiries or engineering discussions.</p>
                         </div>
-                        <a href="mailto:build@atphix.com" class="font-mono text-xs text-white group-hover:text-brand-cyan transition-colors flex items-center gap-2">
-                            build@atphix.com <span class="text-base">→</span>
+                        <a href="tel:+918485856618"
+                            class="font-mono text-xs text-white group-hover:text-brand-cyan transition-colors flex items-center gap-2 font-bold">
+                            +91 8485856618 <span class="text-base">→</span>
                         </a>
                     </div>
 
                     <!-- Contact Option 3 -->
-                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-emerald-400 transition-colors group cursor-hover-target">
+                    <div
+                        class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-emerald-400 transition-colors group cursor-hover-target">
                         <div>
-                            <span class="font-mono text-xs text-emerald-400 uppercase block mb-4">[ GLOBAL HEADQUARTERS ]</span>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">San Francisco & London</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Operating remotely worldwide with key advisory hubs in North America and Europe.</p>
+                            <span class="font-mono text-xs text-emerald-400 uppercase block mb-4">[ HEADQUARTERS
+                                ]</span>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Solapur, India</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Solapur, Maharashtra, India.
+                                Serving clients locally and remotely.</p>
                         </div>
                         <div class="font-mono text-xs text-emerald-400 flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -870,7 +3534,8 @@
     <!-- Professional Table Footer with Background Watermark -->
     <footer class="relative w-full bg-[#030303] text-white border-t border-white/10 pt-20 pb-12 overflow-hidden">
         <!-- Giant Background Watermark Logo -->
-        <div class="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none select-none overflow-hidden z-0">
+        <div
+            class="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none select-none overflow-hidden z-0">
             <span class="font-display font-black text-[28vw] tracking-tighter text-white whitespace-nowrap">
                 ATPHIX
             </span>
@@ -879,18 +3544,20 @@
         <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
             <!-- Footer Content Table Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-white/10">
-                
+
                 <!-- Col 1: Brand & Overview -->
                 <div class="lg:col-span-2">
-                    <a href="#hero" class="font-display font-extrabold text-3xl tracking-tighter text-white inline-flex items-center gap-2 mb-4 cursor-hover-target">
+                    <a href="#hero"
+                        class="font-display font-extrabold text-3xl tracking-tighter text-white inline-flex items-center gap-2 mb-4 cursor-hover-target">
                         <span>ATPHIX</span>
                         <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                     </a>
                     <p class="font-sans text-sm text-white/60 max-w-sm leading-relaxed mb-6">
-                        Apex AI Systems, Autonomous Software Engineering, and Strategic Neural Architectures for Forward-Thinking Enterprises.
+                        ATPHIX Technologies — Building Intelligent Systems for the Real World. AI &amp; Automation.
+                        Engineered for Impact.
                     </p>
                     <div class="font-mono text-xs text-white/40 uppercase tracking-widest">
-                        EST. 2026 // ALL SYSTEMS OPERATIONAL
+                        EST. 2024 // SOLAPUR, MAHARASHTRA, INDIA
                     </div>
                 </div>
 
@@ -898,24 +3565,31 @@
                 <div>
                     <h4 class="font-mono text-xs text-brand-accent uppercase tracking-widest mb-6">[ NAVIGATION ]</h4>
                     <ul class="space-y-3 font-sans text-sm text-white/60">
-                        <li><a href="#vision" class="hover:text-white transition-colors cursor-hover-target">01 / Vision</a></li>
-                        <li><a href="#expertise" class="hover:text-white transition-colors cursor-hover-target">02 / Expertise</a></li>
-                        <li><a href="#architectures" class="hover:text-white transition-colors cursor-hover-target">03 / Architectures</a></li>
-                        <li><a href="#vault" class="hover:text-white transition-colors cursor-hover-target">04 / Vault</a></li>
-                        <li><a href="#about" class="hover:text-white transition-colors cursor-hover-target">05 / About Us</a></li>
-                        <li><a href="#contact" class="hover:text-white transition-colors cursor-hover-target">06 / Contact</a></li>
+                        <li><a href="#vision" class="hover:text-white transition-colors cursor-hover-target">01 /
+                                Vision</a></li>
+                        <li><a href="#expertise" class="hover:text-white transition-colors cursor-hover-target">02 /
+                                Services</a></li>
+                        <li><a href="#architectures" class="hover:text-white transition-colors cursor-hover-target">03 /
+                                Products</a></li>
+                        <li><a href="#vault" class="hover:text-white transition-colors cursor-hover-target">04 /
+                                Deployments</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors cursor-hover-target">05 / About
+                                Us</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors cursor-hover-target">06 /
+                                Contact</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 3: Capabilities -->
                 <div>
-                    <h4 class="font-mono text-xs text-brand-cyan uppercase tracking-widest mb-6">[ CORE CAPABILITIES ]</h4>
+                    <h4 class="font-mono text-xs text-brand-cyan uppercase tracking-widest mb-6">[ FLAGSHIP PRODUCTS ]
+                    </h4>
                     <ul class="space-y-3 font-sans text-sm text-white/60">
-                        <li><span>Autonomous Agents</span></li>
-                        <li><span>Enterprise RAG</span></li>
-                        <li><span>Edge Compute Neural Mesh</span></li>
-                        <li><span>WebGL & 3D Web Systems</span></li>
-                        <li><span>Legacy API Modernization</span></li>
+                        <li><span>Sweeper Tracker</span></li>
+                        <li><span>Campus Vehicle Intelligence</span></li>
+                        <li><span>Written Say Generator</span></li>
+                        <li><span>Institutional ERP</span></li>
+                        <li><span>Edge AI &amp; ANPR</span></li>
                     </ul>
                 </div>
 
@@ -923,18 +3597,19 @@
                 <div>
                     <h4 class="font-mono text-xs text-emerald-400 uppercase tracking-widest mb-6">[ CONNECT ]</h4>
                     <ul class="space-y-3 font-sans text-sm text-white/60">
-                        <li><a href="mailto:hello@atphix.com" class="hover:text-white transition-colors cursor-hover-target">hello@atphix.com</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors cursor-hover-target">LinkedIn</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors cursor-hover-target">X / Twitter</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors cursor-hover-target">GitHub</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors cursor-hover-target">Discord</a></li>
+                        <li><a href="mailto:hello@atphix.com"
+                                class="hover:text-white transition-colors cursor-hover-target">hello@atphix.com</a></li>
+                        <li><a href="tel:+918485856618"
+                                class="hover:text-white transition-colors cursor-hover-target">+91 8485856618</a></li>
+                        <li><span>Solapur, Maharashtra</span></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Bottom Legal Bar -->
-            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-[11px] font-mono text-white/40 uppercase tracking-widest gap-4">
-                <div>&copy; 2026 ATPHIX SYSTEMS INC. ALL RIGHTS RESERVED.</div>
+            <div
+                class="pt-8 flex flex-col md:flex-row justify-between items-center text-[11px] font-mono text-white/40 uppercase tracking-widest gap-4">
+                <div>© 2024 - 2026 ATPHIX TECHNOLOGIES. ALL RIGHTS RESERVED.</div>
                 <div class="flex gap-6">
                     <a href="#" class="hover:text-white transition-colors">PRIVACY POLICY</a>
                     <a href="#" class="hover:text-white transition-colors">TERMS OF SERVICE</a>
@@ -1424,5 +4099,7 @@
         });
 
     </script>
+
 </body>
+
 </html>
