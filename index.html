@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATPHIX | Engineering Intelligence & Autonomous Systems</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#030303',
+                            surface: '#0a0a0c',
+                            card: '#121216',
+                            border: '#22222a',
+                            accent: '#3b82f6',
+                            cyan: '#06b6d4',
+                            emerald: '#10b981',
+                            amber: '#f59e0b',
+                            light: '#f4f4f5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --cursor-size: 8px;
+            --cursor-outline-size: 40px;
+        }
+
+        body {
+            background-color: #030303;
+            color: #f4f4f5;
+            margin: 0;
+            cursor: none;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Lenis Smooth Scroll Setup */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+        ::selection {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        /* Custom Interactive Cursor */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            will-change: transform, width, height;
+        }
+
+        .cursor-dot {
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            background-color: #ffffff;
+            mix-blend-mode: difference;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cursor-outline {
+            width: var(--cursor-outline-size);
+            height: var(--cursor-outline-size);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), height 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, opacity 0.3s;
+        }
+
+        .cursor-text {
+            color: #030303;
+            font-size: 0.55rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            position: absolute;
+            white-space: nowrap;
+        }
+
+        /* Cursor States */
+        .cursor-hover .cursor-dot {
+            width: 48px;
+            height: 48px;
+            background-color: #ffffff;
+        }
+        .cursor-hover .cursor-outline {
+            width: 72px;
+            height: 72px;
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        .cursor-drag .cursor-dot {
+            width: 76px;
+            height: 76px;
+            background-color: #ffffff;
+        }
+        .cursor-drag .cursor-text { opacity: 1; }
+        .cursor-drag .cursor-outline { opacity: 0; }
+
+        .cursor-interactive .cursor-dot {
+            width: 60px;
+            height: 60px;
+            background-color: #3b82f6;
+        }
+        .cursor-interactive .cursor-text { opacity: 1; color: #ffffff; }
+
+        /* Film Grain Effect Overlay */
+        .grain {
+            position: fixed;
+            top: -50%; left: -50%; right: -50%; bottom: -50%;
+            width: 200%; height: 200%;
+            background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9998;
+            animation: grainAnim 8s steps(10) infinite;
+        }
+
+        @keyframes grainAnim {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        /* Architectural Grid Pattern */
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .loader-wrapper {
+            position: fixed;
+            inset: 0;
+            background: #030303;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .split-line { overflow: hidden; display: block; }
+        .split-word { display: inline-block; transform-origin: left bottom; }
+        .split-char { display: inline-block; }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: auto;
+        }
+
+        .outline-text {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.75);
+        }
+
+        .glow-accent {
+            box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Magnetic Button Component */
+        .magnetic-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem 2.75rem;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 9999px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            background: rgba(10, 10, 12, 0.6);
+            backdrop-filter: blur(10px);
+            transition: border-color 0.4s ease;
+        }
+        
+        .magnetic-btn .btn-text {
+            position: relative;
+            z-index: 2;
+            transition: color 0.4s ease;
+        }
+        
+        .magnetic-btn::before {
+            content: '';
+            position: absolute;
+            top: 100%; left: 0;
+            width: 100%; height: 100%;
+            background: #ffffff;
+            border-radius: 50%;
+            transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            z-index: 1;
+        }
+        
+        .magnetic-btn:hover::before {
+            transform: translateY(-50%) scaleY(2.5);
+            border-radius: 0;
+        }
+        .magnetic-btn:hover .btn-text {
+            color: #030303;
+        }
+        .magnetic-btn:hover {
+            border-color: #ffffff;
+        }
+
+        /* High-End Glass Panel */
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transition: border-color 0.4s ease, transform 0.2s ease-out;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        /* Kinetic Marquee */
+        .marquee-inner {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-reverse {
+            animation: marqueeReverse 25s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes marqueeReverse {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Interactive Modal Drawer */
+        .modal-drawer {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(3, 3, 3, 0.85);
+            backdrop-filter: blur(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .modal-drawer.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 680px;
+            height: 100%;
+            background: #0a0a0c;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
+            padding: 3rem 2.5rem;
+        }
+
+        .modal-drawer.active .modal-content {
+            transform: translateX(0);
+        }
+
+        /* Touch Fallback */
+        @media (hover: none) and (pointer: coarse) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+            body { cursor: auto; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Film Grain Background -->
+    <div class="grain"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot">
+        <span class="cursor-text" id="cursor-text">Drag</span>
+    </div>
+    <div class="cursor-outline"></div>
+
+    <!-- Interactive Case Study Modal Drawer -->
+    <div class="modal-drawer" id="case-study-modal" aria-hidden="true">
+        <div class="modal-content relative flex flex-col justify-between">
+            <button class="absolute top-8 right-8 text-red-500/80 hover:text-red-400 font-mono text-xs tracking-widest uppercase cursor-hover-target transition-colors" id="close-modal">
+                [ ESC / CLOSE ]
+            </button>
+            <div>
+                <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-4" id="modal-tag">[ ARCHITECTURE BREAKDOWN ]</span>
+                <h3 class="font-display font-bold text-3xl md:text-5xl text-white uppercase tracking-tight mb-6" id="modal-title">Project Title</h3>
+                <div class="w-full h-[1px] bg-white/10 mb-8"></div>
+                <div class="space-y-6 text-white/70 font-sans text-sm md:text-base leading-relaxed" id="modal-body">
+                    <p>Loading deep telemetry insights...</p>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/10 mt-12 flex items-center justify-between font-mono text-xs text-white/40">
+                <span>STATUS: VERIFIED DEPLOYMENT</span>
+                <span>SECURITY: LEVEL 05</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- High-Tech Boot Sequence Loader -->
+    <div class="loader-wrapper" id="loader">
+        <div class="overflow-hidden mb-6 relative">
+            <h1 class="font-display font-bold text-5xl md:text-8xl tracking-tighter loader-text mix-blend-difference text-white">ATPHIX</h1>
+        </div>
+        <div class="w-72 h-[2px] bg-white/10 relative overflow-hidden mt-6">
+            <div class="absolute top-0 left-0 h-full bg-white w-0 transition-all duration-75" id="loader-progress"></div>
+        </div>
+        <div class="mt-6 flex justify-between w-72 text-[10px] font-mono tracking-widest text-white/50 uppercase">
+            <span id="loader-status">LOAD_MODULE: NEURAL_CORE</span>
+            <span id="loader-counter">000%</span>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Header -->
+    <header id="main-header" class="fixed top-0 left-0 w-full px-6 py-6 md:px-10 md:py-8 flex justify-between items-center z-[100] text-white transition-all duration-500">
+        <!-- Dynamic Header Background that appears on scroll -->
+        <div id="header-bg" class="absolute inset-0 bg-[#030303]/85 backdrop-blur-xl border-b border-white/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+        
+        <a href="#hero" class="font-display font-extrabold text-2xl tracking-tighter cursor-hover-target flex items-center gap-2 relative z-10 drop-shadow-lg">
+            <span>ATPHIX</span>
+            <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+        </a>
+        <nav class="hidden lg:flex items-center gap-10 bg-black/40 backdrop-blur-md px-8 py-3 rounded-full border border-white/10 relative z-10 drop-shadow-lg">
+            <a href="#vision" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">01 / Vision</a>
+            <a href="#expertise" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">02 / Expertise</a>
+            <a href="#architectures" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">03 / Architectures</a>
+            <a href="#vault" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">04 / Vault</a>
+            <a href="#about" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">05 / About Us</a>
+            <a href="#contact" class="text-[10px] font-mono tracking-[0.25em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">06 / Contact</a>
+        </nav>
+        <div class="flex items-center gap-4 relative z-10">
+            <!-- Audio Toggle Control -->
+            <button id="audio-toggle" class="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors cursor-hover-target flex items-center justify-center text-xs backdrop-blur-md drop-shadow-lg" title="Toggle Audio Feedback">
+                <span id="audio-icon">🔇</span>
+            </button>
+            <a href="#contact" class="magnetic-btn cursor-hover-target text-[10px] !py-3 !px-6 hidden sm:inline-flex drop-shadow-lg">
+                <span class="btn-text">Get In Touch</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (Particle Canvas Brand Reveal) -->
+        <section id="hero" class="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden bg-[#030303]">
+            <canvas id="hero-canvas"></canvas>
+            
+            <div class="absolute bottom-10 left-6 md:bottom-12 md:left-12 pointer-events-none opacity-0 z-10" id="hero-subtitle">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_12px_#10b981]"></div>
+                    <p class="font-mono text-[10px] tracking-[0.3em] text-white/60 uppercase">NEURAL MATRIX : ONLINE</p>
+                </div>
+                <p class="font-display text-xl md:text-3xl font-light text-white/90">Disturb the field to reveal.</p>
+            </div>
+            
+            <div class="absolute bottom-10 right-6 md:bottom-12 md:right-12 flex flex-col items-center gap-4 opacity-0 z-10" id="hero-scroll">
+                <span class="text-[9px] font-mono uppercase tracking-[0.25em] rotate-90 mb-6 text-white/40 origin-bottom">EXPLORE</span>
+                <div class="w-[1px] h-16 bg-white/10 relative overflow-hidden">
+                    <div class="w-full h-1/2 bg-white absolute top-0 animate-[scrollDown_2s_ease-in-out_infinite]"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 01: Vision & Metric Architecture Section -->
+        <section id="vision" class="relative w-full min-h-screen bg-[#030303] border-t border-white/10 flex flex-col justify-between overflow-hidden z-10 py-24 md:py-32">
+            <div class="grid-bg"></div>
+            
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12 w-full relative z-10">
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20">
+                    <div>
+                        <span class="text-[10px] font-mono tracking-[0.3em] text-brand-accent uppercase block mb-3">[ PHASE 01 / THE PARADIGM ]</span>
+                        <h2 class="font-display font-bold text-4xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tighter uppercase reveal-text max-w-4xl">
+                            We do not adapt <br>to the future.
+                        </h2>
+                        <h2 class="font-display font-bold text-4xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tighter uppercase mt-2 reveal-text outline-text max-w-4xl">
+                            We engineer it.
+                        </h2>
+                    </div>
+                    <div class="max-w-md lg:pt-12 border-l border-white/10 pl-6 md:pl-8">
+                        <p class="font-sans text-base md:text-xl font-light leading-relaxed text-white/70 reveal-text-simple">
+                            ATPHIX is an apex technology laboratory. We build autonomous AI architectures, hyper-scalable software ecosystems, and zero-latency infrastructure for enterprises disrupting global paradigms.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Live Algorithmic Metrics Counter Grid -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 my-16">
+                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="font-mono text-xs text-white/40 uppercase block mb-3">BENCHMARK 01</span>
+                        <div class="font-display font-extrabold text-3xl lg:text-4xl xl:text-5xl text-white tracking-tighter mb-2 metric-number" data-target="99.98" data-suffix="%">0.00%</div>
+                        <span class="text-xs font-sans text-white/60">Algorithmic Efficiency Rate</span>
+                    </div>
+
+                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="font-mono text-xs text-white/40 uppercase block mb-3">BENCHMARK 02</span>
+                        <div class="font-display font-extrabold text-3xl lg:text-4xl xl:text-5xl text-white tracking-tighter mb-2 metric-number" data-target="10" data-suffix="x+">0x</div>
+                        <span class="text-xs font-sans text-white/60">Deployment Speed Amplification</span>
+                    </div>
+
+                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="font-mono text-xs text-white/40 uppercase block mb-3">BENCHMARK 03</span>
+                        <div class="font-display font-extrabold text-3xl lg:text-4xl xl:text-5xl text-white tracking-tighter mb-2 metric-number" data-target="4.2" data-suffix="M">0M</div>
+                        <span class="text-xs font-sans text-white/60">Autonomous Inferences / Sec</span>
+                    </div>
+
+                    <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="font-mono text-xs text-white/40 uppercase block mb-3">BENCHMARK 04</span>
+                        <div class="font-display font-extrabold text-3xl lg:text-4xl xl:text-5xl text-white tracking-tighter mb-2 metric-number" data-target="0.00" data-suffix="ms">0ms</div>
+                        <span class="text-xs font-sans text-white/60">Zero-Touch Pipeline Latency</span>
+                    </div>
+                </div>
+
+                <!-- Strategic Philosophy Pillars -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-white/10">
+                    <div class="p-6">
+                        <div class="font-mono text-xs text-brand-accent mb-4">[ PILLAR I ]</div>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Autonomous Determinism</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">
+                            Replacing manual operational loops with deterministic agentic networks that reason, execute, and self-correct without human latency.
+                        </p>
+                    </div>
+                    <div class="p-6">
+                        <div class="font-mono text-xs text-brand-cyan mb-4">[ PILLAR II ]</div>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Cognitive Architecture</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">
+                            Deep neural models fused directly into edge infrastructure, turning raw streaming enterprise data into real-time competitive advantage.
+                        </p>
+                    </div>
+                    <div class="p-6">
+                        <div class="font-mono text-xs text-emerald-400 mb-4">[ PILLAR III ]</div>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-3">Cinematic Precision</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">
+                            High-performance digital products engineered with GPU-accelerated elegance, ensuring brand interactions leave indelible impressions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 02: Expertise & Capabilities (Horizontal Scroll) -->
+        <section id="expertise" class="relative w-full h-screen bg-[#030303] overflow-hidden border-t border-white/10 flex items-center">
+            <div class="absolute top-16 left-6 md:left-12 z-20">
+                <span class="font-mono text-xs text-brand-accent tracking-[0.3em] uppercase block mb-3">[ PHASE 02 / EXPERTISE ]</span>
+                <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white reveal-text">Core Vectors</h2>
+            </div>
+            
+            <!-- Horizontal track container -->
+            <div id="horizontal-container" class="flex h-[60vh] px-6 md:px-32 items-center gap-8 md:gap-16 w-[max-content] relative z-10 mt-20">
+                
+                <!-- Card 1 -->
+                <div class="w-[300px] md:w-[450px] h-full glass-panel rounded-3xl p-8 flex flex-col justify-between hover:border-brand-accent/50 transition-colors group cursor-hover-target shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <div class="font-mono text-xs text-brand-accent mb-4">01 // AUTONOMY</div>
+                        <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-4">Autonomous Agents</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">Multi-agent LLM systems that plan, execute, and self-correct complex enterprise workflows without human latency.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="w-[300px] md:w-[450px] h-full glass-panel rounded-3xl p-8 flex flex-col justify-between hover:border-brand-cyan/50 transition-colors group cursor-hover-target shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <div>
+                        <div class="font-mono text-xs text-brand-cyan mb-4">02 // INFRASTRUCTURE</div>
+                        <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-4">Neural Architecture</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">Deploying deterministic AI directly into edge environments for zero-latency, high-security inferences.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="w-[300px] md:w-[450px] h-full glass-panel rounded-3xl p-8 flex flex-col justify-between hover:border-emerald-500/50 transition-colors group cursor-hover-target shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                    </div>
+                    <div>
+                        <div class="font-mono text-xs text-emerald-500 mb-4">03 // IMMERSION</div>
+                        <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-4">WebGL & 3D</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">High-performance cinematic frontends leveraging custom shaders and particle physics for unforgettable digital presence.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="w-[300px] md:w-[450px] h-full glass-panel rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500/50 transition-colors group cursor-hover-target shrink-0">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <div class="font-mono text-xs text-amber-500 mb-4">04 // SYNTHESIS</div>
+                        <h3 class="font-display font-bold text-2xl md:text-3xl text-white uppercase mb-4">Legacy Bridging</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">Wrapping antiquated monolithic systems in hyper-fast, modern API layers to unlock trapped proprietary data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 03: Architectural Ecosystems (Replaced Playground) -->
+        <section id="architectures" class="py-24 md:py-36 bg-[#030303] relative border-t border-white/10 overflow-hidden">
+            <div class="grid-bg"></div>
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+                <div class="flex flex-col lg:flex-row gap-16 items-start">
+                    <!-- Sticky Left Column -->
+                    <div class="lg:w-1/3 lg:sticky lg:top-32">
+                        <span class="font-mono text-xs text-brand-cyan tracking-widest uppercase block mb-3">[ PHASE 03 / ARCHITECTURAL ECOSYSTEMS ]</span>
+                        <h2 class="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight text-white mb-6">Workflow<br>Synthetics</h2>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed mb-8">
+                            We bridge the gap between theoretical AI models and production-ready enterprise workflows. Our customized architectures eliminate operational debt and scale intelligent automation across your entire digital surface.
+                        </p>
+                        <a href="#initiate" class="font-mono text-xs text-brand-accent tracking-widest uppercase hover:text-white transition-colors cursor-hover-target flex items-center gap-2">
+                            Deploy Custom Architecture <span class="text-lg">→</span>
+                        </a>
+                    </div>
+
+                    <!-- Scrolling Right Column -->
+                    <div class="lg:w-2/3 flex flex-col gap-6">
+                        <!-- Stack Item 1 -->
+                        <div class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-brand-accent/50 transition-colors group cursor-hover-target">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent mb-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                </div>
+                                <span class="font-mono text-xs text-white/30 group-hover:text-brand-accent transition-colors">01</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Agentic Task Orchestration</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed">
+                                Deployment of multi-agent LLM systems capable of reasoning, planning, and executing complex multi-step workflows. Automate procurement, customer support triaging, and dynamic resource allocation without human intervention.
+                            </p>
+                        </div>
+                        
+                        <!-- Stack Item 2 -->
+                        <div class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-brand-cyan/50 transition-colors group cursor-hover-target">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan mb-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                                </div>
+                                <span class="font-mono text-xs text-white/30 group-hover:text-brand-cyan transition-colors">02</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Enterprise RAG Ecosystems</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed">
+                                Secure, localized Retrieval-Augmented Generation (RAG) pipelines that turn your proprietary databases and documents into contextual neural memory, providing real-time, hallucinatory-free intelligence to your workforce.
+                            </p>
+                        </div>
+
+                        <!-- Stack Item 3 -->
+                        <div class="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 hover:border-emerald-500/50 transition-colors group cursor-hover-target">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500 mb-4">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <span class="font-mono text-xs text-white/30 group-hover:text-emerald-500 transition-colors">03</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Legacy API Bridging</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed">
+                                Modernizing antiquated mainframe and monolithic infrastructures by wrapping them in hyper-fast, secure API layers. We establish frictionless data pipelines connecting legacy systems to modern neural engines.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 04: Breakthrough Case Studies / Impact Vault -->
+        <section id="vault" class="py-24 md:py-36 bg-[#030303] border-t border-white/10 relative">
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                    <div>
+                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 04 / IMPACT VAULT ]</span>
+                        <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">Selected Deployments</h2>
+                    </div>
+                    <span class="font-mono text-xs text-white/40 uppercase tracking-widest">[ DEPLOYED ARCHITECTURES: 2024 - 2026 ]</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Case Study 1 -->
+                    <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between group hover:border-brand-accent transition-colors cursor-hover-target open-case-modal" 
+                         data-title="Project AETHER: Orbital Swarm Control"
+                         data-tag="[ AEROSPACE TELEMETRY ]"
+                         data-body="Engineered a decentralized real-time edge computing mesh for low-earth-orbit satellite fleets. The AI model reduced telemetry synchronization delays from 420ms to 4.1ms while maintaining zero packet loss over degraded RF links.">
+                        <div>
+                            <div class="flex justify-between items-center mb-8 font-mono text-xs">
+                                <span class="text-brand-accent">[ 01 / AEROSPACE ]</span>
+                                <span class="text-white/40">2026</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-brand-accent transition-colors">AETHER / Swarm Edge Mesh</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-8">
+                                Autonomous trajectory correction and decentralized satellite constellation synchronization.
+                            </p>
+                        </div>
+                        <div class="pt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+                            <span class="text-white/40">LATENCY REDUCTION</span>
+                            <span class="text-emerald-400 font-bold">-98.8%</span>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 2 -->
+                    <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between group hover:border-brand-cyan transition-colors cursor-hover-target open-case-modal"
+                         data-title="Project SYNAPSE: FinTech Neural Engine"
+                         data-tag="[ HIGH-FREQUENCY RISK ]"
+                         data-body="Designed sub-millisecond fraud detection algorithms handling over $14 Billion in daily transaction volume. Achieved a 99.98% accuracy score and prevented $180M+ in adversarial automated attacks in Q1 alone.">
+                        <div>
+                            <div class="flex justify-between items-center mb-8 font-mono text-xs">
+                                <span class="text-brand-cyan">[ 02 / FINTECH ]</span>
+                                <span class="text-white/40">2025</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-brand-cyan transition-colors">SYNAPSE / Real-time Fraud Matrix</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-8">
+                                Sub-millisecond transaction risk evaluation and multi-vector threat prevention.
+                            </p>
+                        </div>
+                        <div class="pt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+                            <span class="text-white/40">DAILY VOLUME</span>
+                            <span class="text-brand-cyan font-bold">$14.2 BILLION</span>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 3 -->
+                    <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between group hover:border-amber-400 transition-colors cursor-hover-target open-case-modal"
+                         data-title="Project OMNI: Global Logistics Engine"
+                         data-tag="[ AUTONOMOUS LOGISTICS ]"
+                         data-body="Transformed a multinational supply chain network into an autonomous zero-touch pipeline. Replaced 14 static software tools with a unified self-healing agentic network.">
+                        <div>
+                            <div class="flex justify-between items-center mb-8 font-mono text-xs">
+                                <span class="text-amber-400">[ 03 / LOGISTICS ]</span>
+                                <span class="text-white/40">2025</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-4 group-hover:text-amber-400 transition-colors">OMNI / Autonomous Supply Orchestrator</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-8">
+                                Self-healing supply chain routing and predictive inventory allocation across 40 countries.
+                            </p>
+                        </div>
+                        <div class="pt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+                            <span class="text-white/40">OPERATIONAL SAVINGS</span>
+                            <span class="text-amber-400 font-bold">$42M / ANNUM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 05: Execution Methodology Pipeline -->
+        <section id="pipeline" class="py-24 md:py-36 bg-[#060608] border-t border-white/10 relative">
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12">
+                <div class="mb-20">
+                    <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 05 / ENGINEERING METHODOLOGY ]</span>
+                    <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">The Intelligence Pipeline</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                    <!-- Step 1 -->
+                    <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
+                        <span class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-brand-accent transition-colors">01</span>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Neural Audit</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">
+                            Deep analysis of existing enterprise data streams, vector bottlenecks, and computational architecture limits.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
+                        <span class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-brand-cyan transition-colors">02</span>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Model Synthesis</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">
+                            Custom AI model training, agentic prompt graph engineering, and zero-latency backend synthesis.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
+                        <span class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-emerald-400 transition-colors">03</span>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Edge Sync</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">
+                            Seamless zero-downtime deployment into distributed cloud nodes and high-security edge endpoints.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
+                        <span class="font-display font-extrabold text-5xl text-white/10 block mb-6 group-hover:text-amber-400 transition-colors">04</span>
+                        <h3 class="font-display font-bold text-xl text-white uppercase mb-4">Self-Evolution</h3>
+                        <p class="font-sans text-sm text-white/60 leading-relaxed">
+                            Continuous autonomous feedback loops ensuring models auto-tune and refine accuracy over time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kinetic Brand Marquee Section -->
+        <section class="py-10 md:py-14 bg-[#030303] overflow-hidden border-y border-white/10 relative">
+            <div class="marquee-wrapper flex whitespace-nowrap opacity-90 cursor-hover-target z-10 relative">
+                <div class="marquee-inner text-2xl md:text-4xl font-display font-semibold uppercase tracking-wider text-white/80">
+                    <span class="mx-6 text-white font-bold">Pushing Boundaries</span><span class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-brand-accent">Defining Standards</span><span class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-white font-bold">Autonomous Future</span><span class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-brand-cyan">Zero Latency</span><span class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-white font-bold">Pushing Boundaries</span><span class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-brand-accent">Defining Standards</span><span class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-white font-bold">Autonomous Future</span><span class="mx-6 text-white/30">//</span>
+                    <span class="mx-6 text-brand-cyan">Zero Latency</span><span class="mx-6 text-white/30">//</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 05: About Us Section -->
+        <section id="about" class="py-24 md:py-36 bg-[#030303] border-t border-white/10 relative overflow-hidden">
+            <div class="grid-bg"></div>
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-16">
+                    <div class="lg:w-1/2">
+                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 05 / ABOUT ATPHIX ]</span>
+                        <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white mb-6">
+                            Architects of Autonomous Intelligence
+                        </h2>
+                        <p class="font-sans text-base md:text-lg text-white/70 leading-relaxed mb-6">
+                            ATPHIX is a premiere AI engineering studio and software architecture company. We design, deploy, and scale custom autonomous agent ecosystems, deterministic neural software, and bespoke digital platforms for enterprise pioneers worldwide.
+                        </p>
+                        <p class="font-sans text-sm md:text-base text-white/50 leading-relaxed">
+                            By combining edge compute optimization, multi-agent orchestration, and WebGL precision, we strip away technological friction to build software that thinks, adapts, and executes in real time.
+                        </p>
+                    </div>
+
+                    <div class="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <span class="font-mono text-xs text-brand-cyan uppercase block mb-2">[ OUR CORE FOCUS ]</span>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Agentic Systems</h3>
+                            <p class="font-sans text-xs text-white/60 leading-relaxed">Self-healing multi-agent workflows built for continuous enterprise automation without human latency.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <span class="font-mono text-xs text-brand-accent uppercase block mb-2">[ OUR COMMITMENT ]</span>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Zero Latency</h3>
+                            <p class="font-sans text-xs text-white/60 leading-relaxed">Sub-millisecond model inferences embedded directly at the edge for maximum speed and security.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <span class="font-mono text-xs text-emerald-400 uppercase block mb-2">[ OUR METRICS ]</span>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">99.9% Precision</h3>
+                            <p class="font-sans text-xs text-white/60 leading-relaxed">Deterministic neural graphs engineered for hallucination-free enterprise knowledge deployment.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl">
+                            <span class="font-mono text-xs text-amber-400 uppercase block mb-2">[ OUR STANDARDS ]</span>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Awwwards Grade</h3>
+                            <p class="font-sans text-xs text-white/60 leading-relaxed">Cinematic design systems and WebGL graphics crafted with agency-level aesthetic excellence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 06: Contact Us Section -->
+        <section id="contact" class="py-24 md:py-36 bg-[#060608] border-t border-white/10 relative">
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 06 / CONTACT US ]</span>
+                    <h2 class="font-display text-4xl md:text-7xl font-bold uppercase tracking-tight text-white mb-6">
+                        Let's Engineer The Future
+                    </h2>
+                    <p class="font-sans text-base md:text-xl text-white/60">
+                        Have a complex technical challenge, AI initiative, or software vision? Connect directly with our core engineering leadership.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Contact Option 1 -->
+                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-accent transition-colors group cursor-hover-target">
+                        <div>
+                            <span class="font-mono text-xs text-brand-accent uppercase block mb-4">[ DIRECT INQUIRIES ]</span>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Enterprise Sales & Audit</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Discuss project scope, system architectures, or schedule an executive technical assessment.</p>
+                        </div>
+                        <a href="mailto:hello@atphix.com" class="font-mono text-xs text-white group-hover:text-brand-accent transition-colors flex items-center gap-2">
+                            hello@atphix.com <span class="text-base">→</span>
+                        </a>
+                    </div>
+
+                    <!-- Contact Option 2 -->
+                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-cyan transition-colors group cursor-hover-target">
+                        <div>
+                            <span class="font-mono text-xs text-brand-cyan uppercase block mb-4">[ PARTNERSHIPS ]</span>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Ventures & Research</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Collaborate on neural AI research, co-development, or strategic technology integration.</p>
+                        </div>
+                        <a href="mailto:build@atphix.com" class="font-mono text-xs text-white group-hover:text-brand-cyan transition-colors flex items-center gap-2">
+                            build@atphix.com <span class="text-base">→</span>
+                        </a>
+                    </div>
+
+                    <!-- Contact Option 3 -->
+                    <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-emerald-400 transition-colors group cursor-hover-target">
+                        <div>
+                            <span class="font-mono text-xs text-emerald-400 uppercase block mb-4">[ GLOBAL HEADQUARTERS ]</span>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">San Francisco & London</h3>
+                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Operating remotely worldwide with key advisory hubs in North America and Europe.</p>
+                        </div>
+                        <div class="font-mono text-xs text-emerald-400 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>RESPONSE TIME: &lt; 24 HOURS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Professional Table Footer with Background Watermark -->
+    <footer class="relative w-full bg-[#030303] text-white border-t border-white/10 pt-20 pb-12 overflow-hidden">
+        <!-- Giant Background Watermark Logo -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none select-none overflow-hidden z-0">
+            <span class="font-display font-black text-[28vw] tracking-tighter text-white whitespace-nowrap">
+                ATPHIX
+            </span>
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+            <!-- Footer Content Table Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-white/10">
+                
+                <!-- Col 1: Brand & Overview -->
+                <div class="lg:col-span-2">
+                    <a href="#hero" class="font-display font-extrabold text-3xl tracking-tighter text-white inline-flex items-center gap-2 mb-4 cursor-hover-target">
+                        <span>ATPHIX</span>
+                        <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                    </a>
+                    <p class="font-sans text-sm text-white/60 max-w-sm leading-relaxed mb-6">
+                        Apex AI Systems, Autonomous Software Engineering, and Strategic Neural Architectures for Forward-Thinking Enterprises.
+                    </p>
+                    <div class="font-mono text-xs text-white/40 uppercase tracking-widest">
+                        EST. 2026 // ALL SYSTEMS OPERATIONAL
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="font-mono text-xs text-brand-accent uppercase tracking-widest mb-6">[ NAVIGATION ]</h4>
+                    <ul class="space-y-3 font-sans text-sm text-white/60">
+                        <li><a href="#vision" class="hover:text-white transition-colors cursor-hover-target">01 / Vision</a></li>
+                        <li><a href="#expertise" class="hover:text-white transition-colors cursor-hover-target">02 / Expertise</a></li>
+                        <li><a href="#architectures" class="hover:text-white transition-colors cursor-hover-target">03 / Architectures</a></li>
+                        <li><a href="#vault" class="hover:text-white transition-colors cursor-hover-target">04 / Vault</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors cursor-hover-target">05 / About Us</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors cursor-hover-target">06 / Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Capabilities -->
+                <div>
+                    <h4 class="font-mono text-xs text-brand-cyan uppercase tracking-widest mb-6">[ CORE CAPABILITIES ]</h4>
+                    <ul class="space-y-3 font-sans text-sm text-white/60">
+                        <li><span>Autonomous Agents</span></li>
+                        <li><span>Enterprise RAG</span></li>
+                        <li><span>Edge Compute Neural Mesh</span></li>
+                        <li><span>WebGL & 3D Web Systems</span></li>
+                        <li><span>Legacy API Modernization</span></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Connect & Socials -->
+                <div>
+                    <h4 class="font-mono text-xs text-emerald-400 uppercase tracking-widest mb-6">[ CONNECT ]</h4>
+                    <ul class="space-y-3 font-sans text-sm text-white/60">
+                        <li><a href="mailto:hello@atphix.com" class="hover:text-white transition-colors cursor-hover-target">hello@atphix.com</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors cursor-hover-target">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors cursor-hover-target">X / Twitter</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors cursor-hover-target">GitHub</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors cursor-hover-target">Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-[11px] font-mono text-white/40 uppercase tracking-widest gap-4">
+                <div>&copy; 2026 ATPHIX SYSTEMS INC. ALL RIGHTS RESERVED.</div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">PRIVACY POLICY</a>
+                    <a href="#" class="hover:text-white transition-colors">TERMS OF SERVICE</a>
+                    <a href="#" class="hover:text-white transition-colors">SECURITY</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* 1. LENIS SMOOTH SCROLLING */
+        const lenis = new Lenis({
+            duration: 1.4,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 0.95,
+            smoothTouch: false,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{ lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        // Header Background Effect on Scroll
+        const mainHeader = document.getElementById('main-header');
+        const headerBg = document.getElementById('header-bg');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                if (headerBg) headerBg.classList.remove('opacity-0');
+                if (mainHeader) {
+                    mainHeader.classList.remove('py-6', 'md:py-8');
+                    mainHeader.classList.add('py-4', 'md:py-5');
+                }
+            } else {
+                if (headerBg) headerBg.classList.add('opacity-0');
+                if (mainHeader) {
+                    mainHeader.classList.remove('py-4', 'md:py-5');
+                    mainHeader.classList.add('py-6', 'md:py-8');
+                }
+            }
+        });
+
+        /* 2. CUSTOM CURSOR & HOVER REACTION */
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        const cursorText = document.getElementById('cursor-text');
+        
+        let mouse = { x: -100, y: -100 };
+        let dotPos = { x: -100, y: -100 };
+        let outlinePos = { x: -100, y: -100 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        document.querySelectorAll('.cursor-hover-target').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        document.querySelectorAll('.cursor-drag-target').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorText.innerText = "DRAG";
+                document.body.classList.add('cursor-drag');
+            });
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-drag'));
+        });
+
+        document.querySelectorAll('.cursor-interactive-target').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorText.innerText = "INTERACT";
+                document.body.classList.add('cursor-interactive');
+            });
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-interactive'));
+        });
+
+        function renderCursor() {
+            dotPos.x += (mouse.x - dotPos.x) * 0.22;
+            dotPos.y += (mouse.y - dotPos.y) * 0.22;
+            outlinePos.x += (mouse.x - outlinePos.x) * 0.12;
+            outlinePos.y += (mouse.y - outlinePos.y) * 0.12;
+
+            cursorDot.style.transform = `translate3d(${dotPos.x}px, ${dotPos.y}px, 0) translate(-50%, -50%)`;
+            cursorOutline.style.transform = `translate3d(${outlinePos.x}px, ${outlinePos.y}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(renderCursor);
+        }
+        requestAnimationFrame(renderCursor);
+
+        /* 3. MAGNETIC BUTTON REACTION */
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                gsap.to(btn, { x: x * 0.35, y: y * 0.35, duration: 0.5, ease: "power3.out" });
+                gsap.to(btn.querySelector('.btn-text'), { x: x * 0.2, y: y * 0.2, duration: 0.5, ease: "power3.out" });
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+                gsap.to(btn.querySelector('.btn-text'), { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+            });
+        });
+
+        /* 4. TEXT SPLITTING ANIMATION UTILITY */
+        function splitTextToSpans(selector) {
+            document.querySelectorAll(selector).forEach(el => {
+                if (el.dataset.split) return;
+                el.dataset.split = "true";
+                const text = el.innerText;
+                const words = text.split(' ');
+                el.innerHTML = '';
+                
+                words.forEach((word, wordIndex) => {
+                    const wordDiv = document.createElement('div');
+                    wordDiv.classList.add('split-word');
+                    word.split('').forEach(char => {
+                        const charSpan = document.createElement('div');
+                        charSpan.classList.add('split-char');
+                        charSpan.innerText = char;
+                        wordDiv.appendChild(charSpan);
+                    });
+                    el.appendChild(wordDiv);
+                    if (wordIndex < words.length - 1) el.appendChild(document.createTextNode(' '));
+                });
+            });
+        }
+
+        /* 5. PRESERVED HERO CANVAS (PARTICLE BRAND REVEAL) */
+        function initHeroCanvas() {
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            
+            let particles = [];
+            let width, height;
+            let canvasMouse = { x: -10000, y: -10000, radius: 90 };
+            
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                canvasMouse.x = e.clientX - rect.left;
+                canvasMouse.y = e.clientY - rect.top;
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                canvasMouse.x = -10000;
+                canvasMouse.y = -10000;
+            });
+
+            canvas.addEventListener('touchmove', (e) => {
+                if (e.touches && e.touches[0]) {
+                    const rect = canvas.getBoundingClientRect();
+                    canvasMouse.x = e.touches[0].clientX - rect.left;
+                    canvasMouse.y = e.touches[0].clientY - rect.top;
+                }
+            }, { passive: true });
+
+            canvas.addEventListener('touchend', () => {
+                canvasMouse.x = -10000;
+                canvasMouse.y = -10000;
+            });
+
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 50) {
+                    canvasMouse.x = -10000;
+                    canvasMouse.y = -10000;
+                }
+            });
+
+            function resizeCanvas() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+                canvas.style.width = `${width}px`;
+                canvas.style.height = `${height}px`;
+                initParticles();
+            }
+
+            class Particle {
+                constructor(x, y) {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.destX = x;
+                    this.destY = y;
+                    this.vx = (Math.random() - 0.5) * 8;
+                    this.vy = (Math.random() - 0.5) * 8;
+                    this.accX = 0;
+                    this.accY = 0;
+                    this.friction = 0.88; 
+                    this.spring = 0.045;
+                    this.size = Math.random() * 1.5 + 0.5;
+                    this.color = `rgba(255, 255, 255, ${Math.random() * 0.7 + 0.3})`;
+                }
+                
+                update() {
+                    this.accX = (this.destX - this.x) * this.spring;
+                    this.accY = (this.destY - this.y) * this.spring;
+                    
+                    let dx = canvasMouse.x - this.x;
+                    let dy = canvasMouse.y - this.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < canvasMouse.radius) {
+                        const force = (canvasMouse.radius - dist) / canvasMouse.radius;
+                        const angle = Math.atan2(dy, dx);
+                        this.accX -= Math.cos(angle) * force * 22;
+                        this.accY -= Math.sin(angle) * force * 22;
+                    }
+                    
+                    this.vx += this.accX;
+                    this.vy += this.accY;
+                    this.vx *= this.friction;
+                    this.vy *= this.friction;
+                    
+                    this.x += this.vx;
+                    this.y += this.vy;
+                }
+                
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                ctx.clearRect(0, 0, width, height);
+                
+                let baseFontSize = 300;
+                ctx.font = `800 ${baseFontSize}px Syne, sans-serif`;
+                let textWidth = ctx.measureText('ATPHIX').width;
+                
+                // Guarantee text fits within 70% of screen width (max 900px) with generous breathing space
+                const targetWidth = Math.min(width * 0.70, 900);
+                if (textWidth > targetWidth) {
+                    baseFontSize = baseFontSize * (targetWidth / textWidth);
+                }
+                
+                // Cap height to max 25% of screen height to avoid vertical collision
+                if (baseFontSize > height * 0.25) {
+                    baseFontSize = height * 0.25;
+                }
+                
+                ctx.font = `800 ${baseFontSize}px Syne, sans-serif`;
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                
+                ctx.fillText('ATPHIX', width / 2, height / 2);
+                
+                const textData = ctx.getImageData(0, 0, width, height).data;
+                ctx.clearRect(0, 0, width, height);
+                
+                const step = width < 768 ? 6 : 4; 
+                
+                for (let y = 0; y < height; y += step) {
+                    for (let x = 0; x < width; x += step) {
+                        const index = (y * width + x) * 4;
+                        if (textData[index + 3] > 128) {
+                            particles.push(new Particle(x + (Math.random()-0.5)*1.5, y + (Math.random()-0.5)*1.5));
+                        }
+                    }
+                }
+            }
+
+            function animateCanvas() {
+                ctx.fillStyle = 'rgba(3, 3, 3, 0.3)';
+                ctx.fillRect(0, 0, width, height);
+                
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animateCanvas);
+            }
+
+            document.fonts.ready.then(() => {
+                resizeCanvas();
+                animateCanvas();
+                window.addEventListener('resize', resizeCanvas);
+            });
+        }
+
+        /* 6. REMOVED SIMULATION CANVAS */
+
+        /* 7. SCROLL TRIGGER ANIMATIONS & METRIC COUNTERS */
+        function initScrollAnimations() {
+            splitTextToSpans('.reveal-text');
+            
+            // Text Character Entrance Animations
+            document.querySelectorAll('.reveal-text').forEach(title => {
+                gsap.fromTo(title.querySelectorAll('.split-char'), 
+                    { y: 100, opacity: 0, rotateX: -90, transformOrigin: "0% 50% -50" },
+                    {
+                        y: 0, opacity: 1, rotateX: 0, stagger: 0.02, duration: 1.1, ease: "expo.out",
+                        scrollTrigger: { trigger: title, start: "top 88%" }
+                    }
+                );
+            });
+
+            // Metric Numbers Counter
+            document.querySelectorAll('.metric-number').forEach(metric => {
+                const target = parseFloat(metric.dataset.target);
+                const suffix = metric.dataset.suffix || '';
+                
+                gsap.to(metric, {
+                    scrollTrigger: { trigger: metric, start: "top 85%" },
+                    onUpdate: function() {
+                        const val = (this.progress() * target).toFixed(target % 1 === 0 ? 0 : 2);
+                        metric.innerText = val + suffix;
+                    },
+                    duration: 2, ease: "power3.out"
+                });
+            });
+
+            // Horizontal Scroll Section (Capabilities Horizon)
+            const horizSection = document.getElementById('expertise');
+            const horizContainer = document.getElementById('horizontal-container');
+            
+            // Add safety check so it only initializes if the elements exist
+            if (horizSection && horizContainer) {
+                let scrollTween = gsap.to(horizContainer, {
+                    x: () => -(horizContainer.scrollWidth - window.innerWidth) + "px",
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: horizSection,
+                        start: "top top",
+                        end: () => `+=${horizContainer.scrollWidth - window.innerWidth}`,
+                        pin: true,
+                        scrub: 1,
+                        invalidateOnRefresh: true
+                    }
+                });
+            }
+
+            // Tilt card 3D effect
+            document.querySelectorAll('.tilt-card').forEach((card) => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width/2;
+                    const y = e.clientY - rect.top - rect.height/2;
+                    gsap.to(card, {
+                        rotateY: (x / rect.width) * 8,
+                        rotateX: -(y / rect.height) * 8,
+                        duration: 0.4, ease: "power2.out", transformPerspective: 1000
+                    });
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
+                });
+            });
+        }
+
+        /* 8. INTERACTIVE SOLUTION MATRIX TABS */
+        document.querySelectorAll('.solution-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.target;
+                document.querySelectorAll('.solution-tab').forEach(b => {
+                    b.classList.remove('border-brand-accent', 'bg-white/5');
+                    b.classList.add('border-white/10', 'bg-black/40');
+                });
+                btn.classList.add('border-brand-accent', 'bg-white/5');
+                
+                document.querySelectorAll('.solution-content').forEach(c => c.classList.add('hidden'));
+                document.getElementById(targetId).classList.remove('hidden');
+            });
+        });
+
+        /* 9. CASE STUDY MODAL DRAWER */
+        const caseModal = document.getElementById('case-study-modal');
+        document.querySelectorAll('.open-case-modal').forEach(card => {
+            card.addEventListener('click', () => {
+                document.getElementById('modal-title').innerText = card.dataset.title;
+                document.getElementById('modal-tag').innerText = card.dataset.tag;
+                document.getElementById('modal-body').innerHTML = `<p>${card.dataset.body}</p>`;
+                caseModal.classList.add('active');
+            });
+        });
+
+        const closeModal = () => {
+            caseModal.classList.remove('active');
+        };
+
+        document.getElementById('close-modal').addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && caseModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        /* 10. SPATIAL SOUND SYNTH (WEB AUDIO API) */
+        let audioCtx = null;
+        let audioMuted = true;
+
+        document.getElementById('audio-toggle').addEventListener('click', () => {
+            audioMuted = !audioMuted;
+            document.getElementById('audio-icon').innerText = audioMuted ? '🔇' : '🔊';
+            if (!audioMuted && !audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        });
+
+        function playBeep(freq = 440, type = 'sine') {
+            if (audioMuted || !audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.15);
+        }
+
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mouseenter', () => playBeep(880, 'sine'));
+            el.addEventListener('click', () => playBeep(1200, 'triangle'));
+        });
+
+        /* 11. BOOT LOADER SEQUENCE */
+        function initLoader() {
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    initHeroCanvas();
+                    initScrollAnimations();
+                }
+            });
+
+            lenis.stop();
+
+            let counter = { value: 0 };
+            const counterEl = document.getElementById('loader-counter');
+            const statusEl = document.getElementById('loader-status');
+
+            const statuses = [
+                "LOAD_MODULE: NEURAL_CORE",
+                "INIT_CANVAS_SYSTEMS: OK",
+                "SYNC_QUANTUM_VECTOR: OK",
+                "BOOT_INTERFACE: READY"
+            ];
+
+            tl.to(counter, {
+                value: 100, duration: 2.2, ease: "expo.inOut",
+                onUpdate: () => {
+                    const progress = Math.round(counter.value);
+                    counterEl.innerText = progress.toString().padStart(3, '0') + '%';
+                    document.getElementById('loader-progress').style.width = `${progress}%`;
+                    
+                    const statusIdx = Math.min(Math.floor((progress / 100) * statuses.length), statuses.length - 1);
+                    statusEl.innerText = statuses[statusIdx];
+                }
+            })
+            .to('.loader-text', { y: -50, opacity: 0, duration: 0.6, ease: "power3.inOut" }, "+=0.1")
+            .to('.loader-wrapper', {
+                yPercent: -100, duration: 1.1, ease: "expo.inOut",
+                onComplete: () => {
+                    lenis.start();
+                    document.getElementById('loader').style.display = 'none';
+                    gsap.to(['#hero-subtitle', '#hero-scroll'], {
+                        opacity: 1, y: 0, duration: 1.2, stagger: 0.2, ease: "power3.out"
+                    });
+                }
+            }, "-=0.3");
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                initLoader();
+            }, 100);
+        });
+
+    </script>
+</body>
+</html>
