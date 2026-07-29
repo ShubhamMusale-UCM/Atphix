@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATPHIX | Engineering Intelligence & Autonomous Systems</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/atphix_logo.png">
+    <link rel="shortcut icon" href="assets/atphix_logo.png">
+    <link rel="apple-touch-icon" href="assets/atphix_logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -426,36 +430,47 @@
     </style>
 
     <style>
-    /* Seamless Section Slide Reveal Animation Styles */
-    .reveal-section {
-        opacity: 0;
-        transform: translateY(50px) scale(0.98);
-        transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-        will-change: opacity, transform;
-    }
+        /* Seamless Section Slide Reveal Animation Styles */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(50px) scale(0.98);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
 
-    .reveal-section.is-visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+        .reveal-section.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
 
-    .reveal-card {
-        opacity: 0;
-        transform: translateY(35px);
-        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        will-change: opacity, transform;
-    }
+        .reveal-card {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
 
-    .reveal-section.is-visible .reveal-card {
-        opacity: 1;
-        transform: translateY(0);
-    }
+        .reveal-section.is-visible .reveal-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    /* Stagger delays for cards */
-    .reveal-section.is-visible .reveal-card:nth-child(1) { transition-delay: 0.1s; }
-    .reveal-section.is-visible .reveal-card:nth-child(2) { transition-delay: 0.25s; }
-    .reveal-section.is-visible .reveal-card:nth-child(3) { transition-delay: 0.4s; }
-    .reveal-section.is-visible .reveal-card:nth-child(4) { transition-delay: 0.55s; }
+        /* Stagger delays for cards */
+        .reveal-section.is-visible .reveal-card:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-section.is-visible .reveal-card:nth-child(2) {
+            transition-delay: 0.25s;
+        }
+
+        .reveal-section.is-visible .reveal-card:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+
+        .reveal-section.is-visible .reveal-card:nth-child(4) {
+            transition-delay: 0.55s;
+        }
     </style>
 </head>
 
@@ -528,13 +543,27 @@
         </a>
         <nav
             class="hidden lg:flex items-center gap-8 bg-black/40 backdrop-blur-md px-8 py-3 rounded-full border border-white/10 relative z-10 drop-shadow-lg">
-            <a href="#vision" class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">01 / Vision</a>
-            <a href="#expertise" class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">02 / Services</a>
-            <a href="#architectures" class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">03 / Solutions</a>
-            <a href="#vault" class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">04 / Vault</a>
-            <a href="#pipeline" class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">05 / Process</a>
-            <a href="#about" class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">06 / About Us</a>
-            <a href="#contact" class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">07 / Contact</a>
+            <a href="#vision"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">01
+                / Vision</a>
+            <a href="#expertise"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">02
+                / Services</a>
+            <a href="#architectures"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">03
+                / Solutions</a>
+            <a href="#vault"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">04
+                / Vault</a>
+            <a href="#pipeline"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">05
+                / Process</a>
+            <a href="#about"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">06
+                / About Us</a>
+            <a href="#contact"
+                class="text-[10px] font-mono tracking-[0.2em] uppercase hover:text-brand-accent transition-colors cursor-hover-target">07
+                / Contact</a>
         </nav>
         <div class="flex items-center gap-4 relative z-10">
             <!-- Audio Toggle Control -->
@@ -549,6 +578,19 @@
             </a>
         </div>
     </header>
+
+    
+    <!-- Fixed Side Branding Watermark / Logo -->
+    <div class="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-4 pointer-events-auto opacity-80 hover:opacity-100 transition-opacity duration-300">
+        <a href="#hero" class="group flex flex-col items-center gap-3">
+            <div class="p-2 rounded-2xl bg-black/80 border border-white/15 backdrop-blur-md group-hover:border-brand-accent group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-300">
+                <img src="assets/atphix_logo.png" alt="ATPHIX Logo" class="w-8 h-8 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg class="w-6 h-6 text-brand-accent hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <div class="w-[1px] h-14 bg-gradient-to-b from-brand-accent/60 via-white/20 to-transparent"></div>
+            <span class="font-mono text-[9px] text-white/60 group-hover:text-brand-accent uppercase tracking-[0.35em] [writing-mode:vertical-lr] rotate-180 transition-colors duration-300 font-semibold">ATPHIX MATRIX</span>
+        </a>
+    </div>
 
     <main>
         <!-- Hero Section (Particle Canvas Brand Reveal) -->
@@ -576,7 +618,7 @@
             </div>
         </section>
 
-<!-- Phase 01: Vision & Metric Architecture Section -->
+        <!-- Phase 01: Vision & Metric Architecture Section -->
         <section id="vision"
             class="relative w-full min-h-screen bg-[#030303] border-t border-white/10 flex flex-col justify-between overflow-hidden z-10 py-24 md:py-32">
             <div class="grid-bg"></div>
@@ -786,13 +828,15 @@
                 <!-- Section Header -->
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div>
-                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 02 / CORE SERVICES ]</span>
+                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE
+                            02 / CORE SERVICES ]</span>
                         <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">
                             What We Engineer
                         </h2>
                     </div>
                     <p class="font-sans text-sm md:text-base text-white/60 max-w-md">
-                        High-density AI architecture, neural automation pipelines, and production-grade edge infrastructure built for mission-critical enterprise deployment.
+                        High-density AI architecture, neural automation pipelines, and production-grade edge
+                        infrastructure built for mission-critical enterprise deployment.
                     </p>
                 </div>
 
@@ -800,146 +844,209 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
                     <!-- Service 1: AI & Vision Systems -->
-                    <div class="glass-panel min-h-[420px] rounded-3xl relative overflow-hidden border border-white/10 hover:border-brand-accent transition-all duration-500 group cursor-hover-target flex flex-col justify-between p-8 bg-[#0a0a0c]">
+                    <div
+                        class="glass-panel min-h-[420px] rounded-3xl relative overflow-hidden border border-white/10 hover:border-brand-accent transition-all duration-500 group cursor-hover-target flex flex-col justify-between p-8 bg-[#0a0a0c]">
                         <!-- Background Visual Image with Dark Cyber Gradient Overlay -->
                         <img src="./assets/service_vision.png" alt="AI & Vision Systems"
                             class="absolute inset-0 w-full h-full object-cover object-center opacity-40 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none"></div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none">
+                        </div>
 
                         <!-- Top HUD Status -->
                         <div class="relative z-10 flex justify-between items-center">
-                            <div class="w-12 h-12 rounded-2xl bg-brand-accent/20 border border-brand-accent/40 backdrop-blur-md flex items-center justify-center text-brand-accent shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-brand-accent/20 border border-brand-accent/40 backdrop-blur-md flex items-center justify-center text-brand-accent shadow-[0_0_20px_rgba(59,130,246,0.3)]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
                                 </svg>
                             </div>
-                            <span class="font-mono text-[10px] tracking-widest text-brand-accent uppercase px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/30 backdrop-blur-md">
+                            <span
+                                class="font-mono text-[10px] tracking-widest text-brand-accent uppercase px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/30 backdrop-blur-md">
                                 SYSTEM // 01
                             </span>
                         </div>
 
                         <!-- Bottom Content Header & Details -->
                         <div class="relative z-10 pt-16">
-                            <div class="font-mono text-xs text-brand-accent tracking-widest uppercase mb-2">NEURAL ARCHITECTURE</div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-brand-accent transition-colors">
+                            <div class="font-mono text-xs text-brand-accent tracking-widest uppercase mb-2">NEURAL
+                                ARCHITECTURE</div>
+                            <h3
+                                class="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-brand-accent transition-colors">
                                 AI & Vision Systems
                             </h3>
                             <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
-                                Deep learning object detection, real-time video analytics, facial recognition, and automated video stream intelligence.
+                                Deep learning object detection, real-time video analytics, facial recognition, and
+                                automated video stream intelligence.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">CV Pipeline</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Neural Net</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Zero-Latency</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">CV
+                                    Pipeline</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Neural
+                                    Net</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Zero-Latency</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Service 2: Workforce Automation -->
-                    <div class="glass-panel min-h-[420px] rounded-3xl relative overflow-hidden border border-white/10 hover:border-brand-cyan transition-all duration-500 group cursor-hover-target flex flex-col justify-between p-8 bg-[#0a0a0c]">
+                    <div
+                        class="glass-panel min-h-[420px] rounded-3xl relative overflow-hidden border border-white/10 hover:border-brand-cyan transition-all duration-500 group cursor-hover-target flex flex-col justify-between p-8 bg-[#0a0a0c]">
                         <!-- Background Visual Image with Dark Cyber Gradient Overlay -->
                         <img src="./assets/service_workforce.png" alt="Workforce Automation"
                             class="absolute inset-0 w-full h-full object-cover object-center opacity-40 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none"></div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none">
+                        </div>
 
                         <!-- Top HUD Status -->
                         <div class="relative z-10 flex justify-between items-center">
-                            <div class="w-12 h-12 rounded-2xl bg-brand-cyan/20 border border-brand-cyan/40 backdrop-blur-md flex items-center justify-center text-brand-cyan shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-brand-cyan/20 border border-brand-cyan/40 backdrop-blur-md flex items-center justify-center text-brand-cyan shadow-[0_0_20px_rgba(6,182,212,0.3)]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                    </path>
                                 </svg>
                             </div>
-                            <span class="font-mono text-[10px] tracking-widest text-brand-cyan uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 backdrop-blur-md">
+                            <span
+                                class="font-mono text-[10px] tracking-widest text-brand-cyan uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 backdrop-blur-md">
                                 SYSTEM // 02
                             </span>
                         </div>
 
                         <!-- Bottom Content Header & Details -->
                         <div class="relative z-10 pt-16">
-                            <div class="font-mono text-xs text-brand-cyan tracking-widest uppercase mb-2">CIVIC & ENTERPRISE</div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-brand-cyan transition-colors">
+                            <div class="font-mono text-xs text-brand-cyan tracking-widest uppercase mb-2">CIVIC &
+                                ENTERPRISE</div>
+                            <h3
+                                class="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-brand-cyan transition-colors">
                                 Workforce Automation
                             </h3>
                             <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
-                                Municipal tracking platforms, sanitation verification algorithms, live field agent route tracking, and automated task dispatch.
+                                Municipal tracking platforms, sanitation verification algorithms, live field agent route
+                                tracking, and automated task dispatch.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Agentic Graphs</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Sweeper Tracker</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Sanitation Audit</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Agentic
+                                    Graphs</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Sweeper
+                                    Tracker</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Sanitation
+                                    Audit</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Service 3: Edge AI Platforms -->
-                    <div class="glass-panel min-h-[420px] rounded-3xl relative overflow-hidden border border-white/10 hover:border-emerald-400 transition-all duration-500 group cursor-hover-target flex flex-col justify-between p-8 bg-[#0a0a0c]">
+                    <div
+                        class="glass-panel min-h-[420px] rounded-3xl relative overflow-hidden border border-white/10 hover:border-emerald-400 transition-all duration-500 group cursor-hover-target flex flex-col justify-between p-8 bg-[#0a0a0c]">
                         <!-- Background Visual Image with Dark Cyber Gradient Overlay -->
                         <img src="./assets/service_edge.png" alt="Edge AI Platforms"
                             class="absolute inset-0 w-full h-full object-cover object-center opacity-40 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none"></div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none">
+                        </div>
 
                         <!-- Top HUD Status -->
                         <div class="relative z-10 flex justify-between items-center">
-                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 backdrop-blur-md flex items-center justify-center text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 backdrop-blur-md flex items-center justify-center text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                    </path>
                                 </svg>
                             </div>
-                            <span class="font-mono text-[10px] tracking-widest text-emerald-400 uppercase px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-md">
+                            <span
+                                class="font-mono text-[10px] tracking-widest text-emerald-400 uppercase px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-md">
                                 SYSTEM // 03
                             </span>
                         </div>
 
                         <!-- Bottom Content Header & Details -->
                         <div class="relative z-10 pt-16">
-                            <div class="font-mono text-xs text-emerald-400 tracking-widest uppercase mb-2">EDGE COMPUTING & ANPR</div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-emerald-400 transition-colors">
+                            <div class="font-mono text-xs text-emerald-400 tracking-widest uppercase mb-2">EDGE
+                                COMPUTING & ANPR</div>
+                            <h3
+                                class="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-emerald-400 transition-colors">
                                 Edge AI Platforms
                             </h3>
                             <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
-                                Edge-deployed ANPR (Automatic Number Plate Recognition), smart campus entry surveillance, vehicle analytics, and gate hardware triggers.
+                                Edge-deployed ANPR (Automatic Number Plate Recognition), smart campus entry
+                                surveillance, vehicle analytics, and gate hardware triggers.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">ANPR Engine</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Edge Hardware</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Smart Gate AI</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">ANPR
+                                    Engine</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Edge
+                                    Hardware</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Smart
+                                    Gate AI</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Service 4: Custom Apps & ERP -->
-                    <div class="glass-panel min-h-[420px] rounded-3xl relative overflow-hidden border border-white/10 hover:border-amber-400 transition-all duration-500 group cursor-hover-target flex flex-col justify-between p-8 bg-[#0a0a0c]">
+                    <div
+                        class="glass-panel min-h-[420px] rounded-3xl relative overflow-hidden border border-white/10 hover:border-amber-400 transition-all duration-500 group cursor-hover-target flex flex-col justify-between p-8 bg-[#0a0a0c]">
                         <!-- Background Visual Image with Dark Cyber Gradient Overlay -->
                         <img src="./assets/service_erp.png" alt="Custom Apps & ERP"
                             class="absolute inset-0 w-full h-full object-cover object-center opacity-40 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none"></div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#0a0a0c]/80 to-transparent pointer-events-none">
+                        </div>
 
                         <!-- Top HUD Status -->
                         <div class="relative z-10 flex justify-between items-center">
-                            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 backdrop-blur-md flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 backdrop-blur-md flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                                 </svg>
                             </div>
-                            <span class="font-mono text-[10px] tracking-widest text-amber-400 uppercase px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 backdrop-blur-md">
+                            <span
+                                class="font-mono text-[10px] tracking-widest text-amber-400 uppercase px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 backdrop-blur-md">
                                 SYSTEM // 04
                             </span>
                         </div>
 
                         <!-- Bottom Content Header & Details -->
                         <div class="relative z-10 pt-16">
-                            <div class="font-mono text-xs text-amber-400 tracking-widest uppercase mb-2">FULL-STACK & ENTERPRISE</div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-amber-400 transition-colors">
+                            <div class="font-mono text-xs text-amber-400 tracking-widest uppercase mb-2">FULL-STACK &
+                                ENTERPRISE</div>
+                            <h3
+                                class="font-display font-bold text-2xl text-white uppercase mb-3 group-hover:text-amber-400 transition-colors">
                                 Custom Apps & ERP
                             </h3>
                             <p class="font-sans text-xs md:text-sm text-white/70 leading-relaxed mb-6">
-                                Full-stack web applications, native cross-platform mobile apps, AI document generators, and institutional ERP suites designed for high scalability.
+                                Full-stack web applications, native cross-platform mobile apps, AI document generators,
+                                and institutional ERP suites designed for high scalability.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Academic ERP</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Legal AI Synthesis</span>
-                                <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Mobile & Web</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Academic
+                                    ERP</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Legal
+                                    AI Synthesis</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-[10px] text-white/80 backdrop-blur-sm">Mobile
+                                    & Web</span>
                             </div>
                         </div>
                     </div>
@@ -1410,7 +1517,8 @@
                 <!-- Section Header -->
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div>
-                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 06 / ABOUT ATPHIX TECHNOLOGIES ]</span>
+                        <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE
+                            06 / ABOUT ATPHIX TECHNOLOGIES ]</span>
                         <h2 class="font-display font-bold text-4xl md:text-6xl uppercase tracking-tight text-white">
                             Engineered for Real-World Impact
                         </h2>
@@ -1502,126 +1610,82 @@
                     </div>
                 </div>
 
-                <!-- Founder & Leadership Spotlight Block -->
-                <div
-                    class="glass-panel p-8 md:p-12 rounded-3xl border border-brand-accent/40 relative overflow-hidden mb-12">
-                    <div
-                        class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/10 rounded-full filter blur-3xl pointer-events-none">
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-                        <div class="lg:col-span-7">
-                            <div
-                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/30 font-mono text-[10px] text-brand-accent uppercase mb-4">
-                                <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span>
-                                LEADERSHIP &amp; SYSTEMS ARCHITECTURE
-                            </div>
-                            <h3 class="font-display font-extrabold text-3xl md:text-5xl text-white uppercase mb-2">
-                                Shubham Musale</h3>
-                            <span class="font-mono text-sm text-brand-cyan block mb-6 font-semibold">Founder &amp; Lead
-                                Systems Architect</span>
-
-                            <p class="font-sans text-sm md:text-base text-white/70 leading-relaxed mb-6">
-                                AI/ML &amp; Full-Stack Engineer specializing in production-grade AI systems, computer
-                                vision algorithms, and large-scale automation architectures. Shubham has architected and
-                                deployed critical municipal systems for Solapur Municipal Corporation alongside
-                                specialized legal AI and educational platforms.
+                <!-- Phase 06: Contact Us Section -->
+                <section id="contact" class="py-24 md:py-36 bg-[#060608] border-t border-white/10 relative">
+                    <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[
+                                PHASE 07 /
+                                CONTACT ATPHIX ]</span>
+                            <h2
+                                class="font-display text-4xl md:text-7xl font-bold uppercase tracking-tight text-white mb-6">
+                                Get In Touch
+                            </h2>
+                            <p class="font-sans text-base md:text-xl text-white/60">
+                                Ready to deploy custom AI, workforce automation, or custom software for your
+                                organization?
+                                Connect with ATPHIX Technologies.
                             </p>
                         </div>
 
-                        <!-- Core Team Collaborators Card -->
-                        <div class="lg:col-span-5 bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
-                            <span class="font-mono text-xs text-brand-accent uppercase tracking-widest block mb-4">[
-                                CORE ENGINEERING TEAM ]</span>
-                            <div class="space-y-3 font-sans text-sm text-white/80">
-                                <div class="flex items-center justify-between pb-2 border-b border-white/10">
-                                    <span class="font-semibold text-white">Vinod Kudkyal</span>
-                                    <span class="font-mono text-xs text-white/40">Collaborator</span>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                            <!-- Contact Option 1 -->
+                            <div
+                                class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-accent transition-colors group cursor-hover-target">
+                                <div>
+                                    <span class="font-mono text-xs text-brand-accent uppercase block mb-4">[ EMAIL
+                                        INQUIRIES
+                                        ]</span>
+                                    <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Direct Email
+                                    </h3>
+                                    <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Reach out for
+                                        project
+                                        consultations, municipal proposals, or custom AI software inquiries.</p>
                                 </div>
-                                <div class="flex items-center justify-between pb-2 border-b border-white/10">
-                                    <span class="font-semibold text-white">Aditya</span>
-                                    <span class="font-mono text-xs text-white/40">Collaborator</span>
+                                <a href="mailto:hello@atphix.com"
+                                    class="font-mono text-xs text-white group-hover:text-brand-accent transition-colors flex items-center gap-2 font-bold">
+                                    hello@atphix.com <span class="text-base">→</span>
+                                </a>
+                            </div>
+
+                            <!-- Contact Option 2 -->
+                            <div
+                                class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-cyan transition-colors group cursor-hover-target">
+                                <div>
+                                    <span class="font-mono text-xs text-brand-cyan uppercase block mb-4">[ DIRECT CALL
+                                        ]</span>
+                                    <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Phone Contact
+                                    </h3>
+                                    <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Speak directly with
+                                        our team
+                                        for urgent inquiries or engineering discussions.</p>
                                 </div>
-                                <div class="flex items-center justify-between pb-2 border-b border-white/10">
-                                    <span class="font-semibold text-white">Akash</span>
-                                    <span class="font-mono text-xs text-white/40">Collaborator</span>
+                                <a href="tel:+918485856618"
+                                    class="font-mono text-xs text-white group-hover:text-brand-cyan transition-colors flex items-center gap-2 font-bold">
+                                    +91 8485856618 <span class="text-base">→</span>
+                                </a>
+                            </div>
+
+                            <!-- Contact Option 3 -->
+                            <div
+                                class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-emerald-400 transition-colors group cursor-hover-target">
+                                <div>
+                                    <span class="font-mono text-xs text-emerald-400 uppercase block mb-4">[ HEADQUARTERS
+                                        ]</span>
+                                    <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Solapur, India
+                                    </h3>
+                                    <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Solapur,
+                                        Maharashtra, India.
+                                        Serving clients locally and remotely.</p>
                                 </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="font-semibold text-white">Kartikesh</span>
-                                    <span class="font-mono text-xs text-white/40">Collaborator</span>
+                                <div class="font-mono text-xs text-emerald-400 flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span>RESPONSE TIME: &lt; 24 HOURS</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Phase 06: Contact Us Section -->
-        <section id="contact" class="py-24 md:py-36 bg-[#060608] border-t border-white/10 relative">
-            <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="font-mono text-xs text-brand-accent tracking-widest uppercase block mb-3">[ PHASE 07 / CONTACT ATPHIX ]</span>
-                    <h2 class="font-display text-4xl md:text-7xl font-bold uppercase tracking-tight text-white mb-6">
-                        Get In Touch
-                    </h2>
-                    <p class="font-sans text-base md:text-xl text-white/60">
-                        Ready to deploy custom AI, workforce automation, or custom software for your organization?
-                        Connect with ATPHIX Technologies.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                    <!-- Contact Option 1 -->
-                    <div
-                        class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-accent transition-colors group cursor-hover-target">
-                        <div>
-                            <span class="font-mono text-xs text-brand-accent uppercase block mb-4">[ EMAIL INQUIRIES
-                                ]</span>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Direct Email</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Reach out for project
-                                consultations, municipal proposals, or custom AI software inquiries.</p>
-                        </div>
-                        <a href="mailto:hello@atphix.com"
-                            class="font-mono text-xs text-white group-hover:text-brand-accent transition-colors flex items-center gap-2 font-bold">
-                            hello@atphix.com <span class="text-base">→</span>
-                        </a>
-                    </div>
-
-                    <!-- Contact Option 2 -->
-                    <div
-                        class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-brand-cyan transition-colors group cursor-hover-target">
-                        <div>
-                            <span class="font-mono text-xs text-brand-cyan uppercase block mb-4">[ DIRECT CALL ]</span>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Phone Contact</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Speak directly with our team
-                                for urgent inquiries or engineering discussions.</p>
-                        </div>
-                        <a href="tel:+918485856618"
-                            class="font-mono text-xs text-white group-hover:text-brand-cyan transition-colors flex items-center gap-2 font-bold">
-                            +91 8485856618 <span class="text-base">→</span>
-                        </a>
-                    </div>
-
-                    <!-- Contact Option 3 -->
-                    <div
-                        class="glass-panel p-8 rounded-3xl flex flex-col justify-between hover:border-emerald-400 transition-colors group cursor-hover-target">
-                        <div>
-                            <span class="font-mono text-xs text-emerald-400 uppercase block mb-4">[ HEADQUARTERS
-                                ]</span>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-3">Solapur, India</h3>
-                            <p class="font-sans text-sm text-white/60 leading-relaxed mb-6">Solapur, Maharashtra, India.
-                                Serving clients locally and remotely.</p>
-                        </div>
-                        <div class="font-mono text-xs text-emerald-400 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            <span>RESPONSE TIME: &lt; 24 HOURS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
     </main>
 
     <!-- Professional Table Footer with Background Watermark -->
@@ -1846,11 +1910,11 @@
         function initHeroCanvas() {
             const canvas = document.getElementById('hero-canvas');
             const ctx = canvas.getContext('2d', { willReadFrequently: true });
-
+            
             let particles = [];
             let width, height;
-            let canvasMouse = { x: -10000, y: -10000, radius: 90 };
-
+            let canvasMouse = { x: -10000, y: -10000, radius: 110 };
+            
             canvas.addEventListener('mousemove', (e) => {
                 const rect = canvas.getBoundingClientRect();
                 canvasMouse.x = e.clientX - rect.left;
@@ -1876,7 +1940,7 @@
             });
 
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
+                if(window.scrollY > 50) {
                     canvasMouse.x = -10000;
                     canvasMouse.y = -10000;
                 }
@@ -1896,39 +1960,38 @@
                 constructor(x, y) {
                     this.destX = x;
                     this.destY = y;
-                    // Start near destination with slight organic micro-offset for smooth convergence
+                    // Start smoothly near target position with micro-spread to eliminate bouncy scattering
                     this.x = x + (Math.random() - 0.5) * 30;
                     this.y = y + (Math.random() - 0.5) * 30;
                     this.size = Math.random() * 1.5 + 0.5;
                     this.baseAlpha = Math.random() * 0.7 + 0.3;
-                    this.alpha = 0; // Smooth initial fade-in
+                    this.alpha = 0; // Seamless opacity fade-in
                 }
-
+                
                 update() {
                     let targetX = this.destX;
                     let targetY = this.destY;
-
+                    
                     let dx = canvasMouse.x - this.x;
                     let dy = canvasMouse.y - this.y;
                     let dist = Math.sqrt(dx * dx + dy * dy);
-
+                    
                     if (dist < canvasMouse.radius) {
                         const force = (canvasMouse.radius - dist) / canvasMouse.radius;
                         const angle = Math.atan2(dy, dx);
-                        targetX -= Math.cos(angle) * force * 45;
-                        targetY -= Math.sin(angle) * force * 45;
+                        targetX -= Math.cos(angle) * force * 50;
+                        targetY -= Math.sin(angle) * force * 50;
                     }
-
-                    // Smooth critically-damped lerp for a seamless, non-bouncy glide
-                    this.x += (targetX - this.x) * 0.07;
-                    this.y += (targetY - this.y) * 0.07;
-
-                    // Smooth opacity fade-in on initial load
+                    
+                    // Critically-damped smooth glide lerp eliminating all bouncy spring oscillation
+                    this.x += (targetX - this.x) * 0.08;
+                    this.y += (targetY - this.y) * 0.08;
+                    
                     if (this.alpha < this.baseAlpha) {
                         this.alpha += 0.025;
                     }
                 }
-
+                
                 draw() {
                     ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
                     ctx.beginPath();
@@ -1940,48 +2003,45 @@
             function initParticles() {
                 particles = [];
                 ctx.clearRect(0, 0, width, height);
-
+                
                 let baseFontSize = 300;
                 ctx.font = `800 ${baseFontSize}px Syne, sans-serif`;
                 let textWidth = ctx.measureText('ATPHIX').width;
-
-                // Guarantee text fits within 70% of screen width (max 900px) with generous breathing space
+                
                 const targetWidth = Math.min(width * 0.70, 900);
                 if (textWidth > targetWidth) {
                     baseFontSize = baseFontSize * (targetWidth / textWidth);
                 }
-
-                // Cap height to max 25% of screen height to avoid vertical collision
+                
                 if (baseFontSize > height * 0.25) {
                     baseFontSize = height * 0.25;
                 }
-
+                
                 ctx.font = `800 ${baseFontSize}px Syne, sans-serif`;
                 ctx.fillStyle = 'white';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-
+                
                 ctx.fillText('ATPHIX', width / 2, height / 2);
-
+                
                 const textData = ctx.getImageData(0, 0, width, height).data;
                 ctx.clearRect(0, 0, width, height);
-
-                const step = width < 768 ? 6 : 4;
-
+                
+                const step = width < 768 ? 6 : 4; 
+                
                 for (let y = 0; y < height; y += step) {
                     for (let x = 0; x < width; x += step) {
                         const index = (y * width + x) * 4;
                         if (textData[index + 3] > 128) {
-                            particles.push(new Particle(x + (Math.random() - 0.5) * 1.5, y + (Math.random() - 0.5) * 1.5));
+                            particles.push(new Particle(x + (Math.random()-0.5)*1.5, y + (Math.random()-0.5)*1.5));
                         }
                     }
                 }
             }
 
             function animateCanvas() {
-                ctx.fillStyle = 'rgba(3, 3, 3, 0.3)';
-                ctx.fillRect(0, 0, width, height);
-
+                ctx.clearRect(0, 0, width, height);
+                
                 particles.forEach(p => {
                     p.update();
                     p.draw();
@@ -1996,16 +2056,30 @@
             });
         }
 
-        /* 6. REMOVED SIMULATION CANVAS */
-
         /* 7. SCROLL TRIGGER ANIMATIONS & METRIC COUNTERS */
         function initScrollAnimations() {
             splitTextToSpans('.reveal-text');
+            
+            // Section Entrance Animations
+            document.querySelectorAll('section:not(#hero)').forEach(sec => {
+                sec.classList.add('reveal-section');
+                gsap.fromTo(sec, 
+                    { opacity: 0, y: 60 },
+                    {
+                        opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: sec,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
 
             // Text Character Entrance Animations
             document.querySelectorAll('.reveal-text').forEach(title => {
-                gsap.fromTo(title.querySelectorAll('.split-char'),
-                    { y: 100, opacity: 0, rotateX: -90, transformOrigin: "0% 50% -50" },
+                gsap.fromTo(title.querySelectorAll('.split-char'), 
+                    { y: 80, opacity: 0, rotateX: -90, transformOrigin: "0% 50% -50" },
                     {
                         y: 0, opacity: 1, rotateX: 0, stagger: 0.02, duration: 1.1, ease: "expo.out",
                         scrollTrigger: { trigger: title, start: "top 88%" }
@@ -2013,14 +2087,28 @@
                 );
             });
 
+            // Sequential Card Reveal Stagger Animations
+            document.querySelectorAll('section').forEach(sec => {
+                const cards = sec.querySelectorAll('.glass-panel, .tilt-card, .service-card, .architecture-card, .vault-card');
+                if (cards.length > 0) {
+                    gsap.fromTo(cards,
+                        { opacity: 0, y: 40, scale: 0.95 },
+                        {
+                            opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.12, ease: "power3.out",
+                            scrollTrigger: { trigger: sec, start: "top 75%" }
+                        }
+                    );
+                }
+            });
+
             // Metric Numbers Counter
             document.querySelectorAll('.metric-number').forEach(metric => {
                 const target = parseFloat(metric.dataset.target);
                 const suffix = metric.dataset.suffix || '';
-
+                
                 gsap.to(metric, {
                     scrollTrigger: { trigger: metric, start: "top 85%" },
-                    onUpdate: function () {
+                    onUpdate: function() {
                         const val = (this.progress() * target).toFixed(target % 1 === 0 ? 0 : 2);
                         metric.innerText = val + suffix;
                     },
@@ -2028,32 +2116,12 @@
                 });
             });
 
-            // Horizontal Scroll Section (Capabilities Horizon)
-            const horizSection = document.getElementById('expertise');
-            const horizContainer = document.getElementById('horizontal-container');
-
-            // Add safety check so it only initializes if the elements exist
-            if (horizSection && horizContainer) {
-                let scrollTween = gsap.to(horizContainer, {
-                    x: () => -(horizContainer.scrollWidth - window.innerWidth) + "px",
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: horizSection,
-                        start: "top top",
-                        end: () => `+=${horizContainer.scrollWidth - window.innerWidth}`,
-                        pin: true,
-                        scrub: 1,
-                        invalidateOnRefresh: true
-                    }
-                });
-            }
-
             // Tilt card 3D effect
-            document.querySelectorAll('.tilt-card').forEach((card) => {
+            document.querySelectorAll('.tilt-card, .glass-panel').forEach((card) => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
+                    const x = e.clientX - rect.left - rect.width/2;
+                    const y = e.clientY - rect.top - rect.height/2;
                     gsap.to(card, {
                         rotateY: (x / rect.width) * 8,
                         rotateX: -(y / rect.height) * 8,
